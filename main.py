@@ -39,7 +39,7 @@ def check_vinted():
             item = format_item(raw_item)
 
             # ── Already seen ──────────────────────────────────────────────────
-            if not is_new(item["id"], seen_ids):
+            if not is_new(item["id"], new_seen):
                 continue
             new_seen.add(str(item["id"]))
 
@@ -70,8 +70,8 @@ def check_vinted():
             verdict = analyse_image(item["photo"])
             item["image_verdict"] = verdict
 
-            # Hard image SKIP only blocks if score is also modest
-            if verdict["action"] == "SKIP" and item["score"] < 5:
+            # Image SKIP is always respected — the visual layer is the final check
+            if verdict["action"] == "SKIP":
                 print(f"  🔴 Image SKIP: {item['title']} — {verdict['reason']}")
                 continue
 
