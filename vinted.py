@@ -45,10 +45,17 @@ def fetch_listings(keyword: str, max_price: float) -> list:
 def extract_year_from_title(title: str):
     """
     Try to pull a publication year from the listing title.
-    Looks for 4-digit numbers that look like a year (1700–2010).
+    Handles both exact years (1877) and decade references (1930s, 1880s).
     Returns the earliest found year, or None.
     """
-    candidates = [int(y) for y in re.findall(r'\b(1[7-9]\d{2}|200\d|201\d)\b', title)]
+    # Exact 4-digit years — e.g. "1877", "1965"
+    exact = [int(y) for y in re.findall(r'\b(1[7-9]\d{2}|200\d|201\d)\b', title)]
+
+    # Decade references — e.g. "1930s", "1880s", "1960s"
+    # Strip the 's' and treat as the start of that decade
+    decade = [int(y) for y in re.findall(r'\b(1[7-9]\d0|200\d)s\b', title, re.IGNORECASE)]
+
+    candidates = exact + decade
     return min(candidates) if candidates else None
 
 

@@ -36,6 +36,20 @@ FIRST_EDITION_PHRASES = [
     "first published",
 ]
 
+# At least one of these must appear for a listing to pass as a book or print.
+# Prevents mirrors, jewellery, ceramics etc. scoring on "Victorian" / "antique" alone.
+BOOK_CONTENT_INDICATORS = [
+    "book", "volume", "vol.", "edition", "hardback", "hardcover",
+    "paperback", "softback", "published", "printed", "pages", "chapter",
+    "illustrated", "illustrations", "plates", "engraving", "engravings",
+    "lithograph", "atlas", "folio", "text", "manuscript", "pamphlet",
+    "catalogue", "catalog", "journal", "almanac", "memoir", "memoirs",
+    "essay", "essays", "treatise", "monograph", "dictionary", "encyclopaedia",
+    "encyclopedia", "anthology", "annals", "gazette", "proceedings",
+    "original plate", "antique print", "hand-coloured", "hand colored",
+    "hand coloured", "chromolithograph", "woodcut", "mezzotint",
+]
+
 
 def _combined(item: dict) -> str:
     return ((item.get("title") or "") + " " + (item.get("description") or "")).lower()
@@ -129,6 +143,15 @@ def hard_block(item: dict) -> tuple[bool, str]:
     regardless of score. These are your absolute walk-away rules.
     """
     combined = _combined(item)
+
+    # Not a book or print at all — mirrors, jewellery, ceramics etc.
+    # We pass if ANY book/print content word is present OR if a genre signal is
+    # present (subject-matter titles like "Natural History of Britain" contain
+    # neither "book" nor "hardback" but are obviously books).
+    has_book_word  = any(ind in combined for ind in BOOK_CONTENT_INDICATORS)
+    has_genre_word = any(g in combined for g in TARGET_GENRE_SIGNALS)
+    if not has_book_word and not has_genre_word:
+        return True, "No book/print content indicators found"
 
     # Post-1900 year in title
     year = item.get("year_hint")

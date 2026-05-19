@@ -104,7 +104,7 @@ def analyse_image(photo_url: str) -> dict:
     b64_data, media_type = image_data
 
     payload = {
-        "model": "claude-sonnet-4-20250514",
+        "model": "claude-sonnet-4-5",
         "max_tokens": 120,
         "system": SYSTEM_PROMPT,
         "messages": [
@@ -136,7 +136,9 @@ def analyse_image(photo_url: str) -> dict:
 
     try:
         resp = requests.post(ANTHROPIC_API, json=payload, headers=headers, timeout=30)
-        resp.raise_for_status()
+        if not resp.ok:
+            print(f"  [image] API error {resp.status_code}: {resp.text[:120]}")
+            return {"action": "UNSURE", "reason": f"API error {resp.status_code}"}
         data = resp.json()
 
         raw_text = "".join(
