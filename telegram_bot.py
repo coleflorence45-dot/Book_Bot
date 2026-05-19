@@ -69,5 +69,7 @@ def send_image(photo_url: str):
     }
     try:
         requests.post(url, data=payload, timeout=10)
+    except KeyboardInterrupt:
+        raise   # let main.py handle clean exit
     except Exception as e:
         print(f"  [telegram] Photo send error: {e}")

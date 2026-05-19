@@ -15,8 +15,6 @@
 
 import schedule
 import time
-import sys, os
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from config import (
     SEARCH_KEYWORDS, MIN_PRICE, MAX_PRICE,
@@ -88,10 +86,19 @@ def check_vinted():
 
 
 get_session_cookie()
-check_vinted()
+
+try:
+    check_vinted()
+except KeyboardInterrupt:
+    print("\n⛔ Stopped.")
+    exit(0)
 
 schedule.every(CHECK_INTERVAL_MINUTES).minutes.do(check_vinted)
 
 while True:
-    schedule.run_pending()
-    time.sleep(20)
+    try:
+        schedule.run_pending()
+        time.sleep(20)
+    except KeyboardInterrupt:
+        print("\n⛔ Bot stopped by user.")
+        exit(0)

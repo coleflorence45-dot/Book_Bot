@@ -144,13 +144,23 @@ def analyse_image(photo_url: str) -> dict:
         raw_text = "".join(
             block["text"] for block in data.get("content", [])
             if block.get("type") == "text"
-        )
+        ).strip()
 
-        verdict = json.loads(raw_text.strip())
+        if not raw_text:
+            return {"action": "UNSURE", "reason": "Empty response from model"}
+
+        # Strip markdown fences if the model wrapped the JSON anyway
+        if raw_text.startswith("```"):
+            raw_text = raw_text.split("```")[-2] if "```" in raw_text else raw_text
+            raw_text = raw_text.lstrip("json").strip()
+
+        verdict = json.loads(raw_text)
         if verdict.get("action") not in ("BUY", "SKIP", "UNSURE"):
             return {"action": "UNSURE", "reason": raw_text[:120]}
         return verdict
 
+    except KeyboardInterrupt:
+        raise  # let main.py handle clean exit
     except Exception as e:
         print(f"  [image] Analysis error: {e}")
         return {"action": "UNSURE", "reason": f"Analysis failed: {e}"}
