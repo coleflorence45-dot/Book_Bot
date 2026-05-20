@@ -147,6 +147,7 @@ def score_item(item: dict) -> dict:
     title       = (item.get("title") or "")
     description = (item.get("description") or "").strip()
     title_words = len(title.split())
+    price       = item.get("price", 999)
 
     # Very short title — seller hasn't done research
     if title_words <= 5:
@@ -170,7 +171,6 @@ def score_item(item: dict) -> dict:
         signals.append("💎 Cheap + vague = likely undervalued")
 
     # ── Price bonus ───────────────────────────────────────────────────────────
-    price = item.get("price", 999)
     if price <= 5.0:
         score += 1
         signals.append("💸 Low price — seller likely unaware of value")

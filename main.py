@@ -15,6 +15,7 @@
 
 import schedule
 import time
+import random
 
 from config import (
     SEARCH_KEYWORDS, MIN_PRICE, MAX_PRICE,
@@ -34,6 +35,8 @@ def check_vinted():
 
     for keyword in SEARCH_KEYWORDS:
         items = fetch_listings(keyword, MAX_PRICE)
+        # Random delay between requests — looks more human, avoids 403 blocks
+        time.sleep(random.uniform(1.5, 3.5))
 
         for raw_item in items:
             item = format_item(raw_item)
@@ -64,7 +67,22 @@ def check_vinted():
                 print(f"  ⚪ Low score ({item['score']}): {item['title']}")
                 continue
 
-            print(f"  🟡 Score {item['score']} — image analysis: {item['title']}")
+            print(f"  🟡 Score {item['score']} — checking signals before image analysis: {item['title']}")
+
+            # Require at least TWO hard positive signals before spending on image API.
+            # One signal + unawareness bonuses is not enough evidence.
+            hard_positive_signals = [s for s in item["signals"] if any(
+                marker in s for marker in [
+                    "Sweet spot year", "Publisher:", "First edition",
+                    "Colour", "Fold", "Lithograph", "Hand-Coloured",
+                    "Chromolithograph", "🥇", "🏛️", "🎨", "📅",
+                ]
+            )]
+            if len(hard_positive_signals) < 2:
+                print(f"  ⏭️  Skipping image — only {len(hard_positive_signals)} hard signal(s): {item['title']}")
+                continue
+
+            print(f"  📸 Image analysis: {item['title']}")
 
             # ── Image analysis ────────────────────────────────────────────────
             verdict = analyse_image(item["photo"])
@@ -94,6 +112,8 @@ except KeyboardInterrupt:
     exit(0)
 
 schedule.every(CHECK_INTERVAL_MINUTES).minutes.do(check_vinted)
+
+print(f"⏳ Waiting {CHECK_INTERVAL_MINUTES} minutes before next scan...\n")
 
 while True:
     try:
