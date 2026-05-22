@@ -1,0 +1,48 @@
+{
+  "alerts": [
+    {
+      "timestamp": "2026-05-22 22:40",
+      "date": "2026-05-22",
+      "time": "22:40",
+      "day": "Friday",
+      "hour": 22,
+      "action": "BUY",
+      "title": "Letters of Queen Victoria 1862-1878 second series Volume 11 John Murray collectible vintage rare",
+      "price": 20.0,
+      "score": 10,
+      "url": "https://www.vinted.co.uk/items/8865761206",
+      "image_reason": "Spine reads 'Letters of Queen Victoria 1862-1878, Second Series Vol II, John Murray' with intact gilt VR cipher and crown. Quality publisher, period cloth, decorative cover.",
+      "signals": [
+        "👍 Condition: Good (+1)",
+        "🏛️ Tier-1 publisher: John Murray (+3)",
+        "📖 Vintage",
+        "📖 Rare",
+        "📖 Collectible",
+        "📅 Sweet spot year: 1862",
+        "🔍 Little or no description"
+      ]
+    },
+    {
+      "timestamp": "2026-05-22 22:56",
+      "date": "2026-05-22",
+      "time": "22:56",
+      "day": "Friday",
+      "hour": 22,
+      "action": "BUY",
+      "title": "Letters of Queen Victoria 1862-1878 second series Volume 11 John Murray collectible vintage rare",
+      "price": 20.0,
+      "score": 10,
+      "url": "https://www.vinted.co.uk/items/8865761206",
+      "image_reason": "Spine reads 'Letters of Queen Victoria 1862-1878, Second Series Vol II, John Murray' with intact gilt VR cipher and crown. Quality publisher, period cloth, decorative cover.",
+      "signals": [
+        "👍 Condition: Good (+1)",
+        "🏛️ Tier-1 publisher: John Murray (+3)",
+        "📖 Vintage",
+        "📖 Rare",
+        "📖 Collectible",
+        "📅 Sweet spot year: 1862",
+        "🔍 Little or no description"
+      ]
+    }
+  ]
+}

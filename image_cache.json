@@ -1,0 +1,27 @@
+{
+  "8974928207": {
+    "action": "SKIP",
+    "reason": "Ladybird children's book, mid-20th century, minimal resale value for Victorian dealer",
+    "analysed": "2026-05-21 18:52"
+  },
+  "8976915212": {
+    "action": "SKIP",
+    "reason": "Spine heavily damaged, boards detached, American publisher not Victorian target",
+    "analysed": "2026-05-22 11:32"
+  },
+  "8865761206": {
+    "action": "BUY",
+    "reason": "Spine reads 'Letters of Queen Victoria 1862-1878, Second Series Vol II, John Murray' with intact gilt VR cipher and crown. Quality publisher, period cloth, decorative cover.",
+    "analysed": "2026-05-22 22:40"
+  },
+  "8867340721": {
+    "action": "SKIP",
+    "reason": "Copyright page confirms 1946 publication. Also self-describes as a 'booklet' — post-1910 and thin pamphlet format.",
+    "analysed": "2026-05-22 22:41"
+  },
+  "8975208175": {
+    "action": "SKIP",
+    "reason": "Tiny devotional pamphlet/miniature book, spine under 1cm, heavily damaged spine with boards detaching, low resale category.",
+    "analysed": "2026-05-22 22:55"
+  }
+}

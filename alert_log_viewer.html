@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book Bot — Alert Log Viewer</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg-primary: #ffffff; --bg-secondary: #f5f5f4; --bg-success: #eaf3de;
+    --bg-warning: #faeeda; --text-primary: #1a1a18; --text-secondary: #6b6b66;
+    --text-tertiary: #9f9f98; --text-success: #3b6d11; --text-warning: #854f0b;
+    --border: rgba(0,0,0,0.12); --radius-md: 8px; --radius-lg: 12px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg-primary: #1e1e1c; --bg-secondary: #2a2a28; --bg-success: #173404;
+      --bg-warning: #412402; --text-primary: #f0f0ee; --text-secondary: #a0a09a;
+      --text-tertiary: #6b6b66; --text-success: #c0dd97; --text-warning: #fac775;
+      --border: rgba(255,255,255,0.12);
+    }
+  }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg-secondary); color: var(--text-primary); padding: 2rem 1rem; }
+  .container { max-width: 860px; margin: 0 auto; }
+  h1 { font-size: 20px; font-weight: 500; margin-bottom: 1.5rem; }
+  .card { background: var(--bg-primary); border: 0.5px solid var(--border); border-radius: var(--radius-lg); padding: 1.25rem; margin-bottom: 1rem; }
+  .section-title { font-size: 13px; font-weight: 500; color: var(--text-secondary); margin-bottom: 10px; }
+  .metric-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 1rem; }
+  .metric { background: var(--bg-secondary); border-radius: var(--radius-md); padding: 12px 14px; }
+  .metric-label { font-size: 12px; color: var(--text-secondary); margin-bottom: 4px; }
+  .metric-value { font-size: 22px; font-weight: 500; }
+  .upload-area { border: 1.5px dashed var(--border); border-radius: var(--radius-md); padding: 2.5rem; text-align: center; cursor: pointer; margin-bottom: 1rem; transition: background 0.15s; }
+  .upload-area:hover { background: var(--bg-secondary); }
+  .upload-text { font-size: 14px; color: var(--text-secondary); margin-top: 8px; }
+  .upload-sub { font-size: 12px; color: var(--text-tertiary); margin-top: 4px; }
+  .day-bar { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
+  .day-label { font-size: 13px; color: var(--text-secondary); width: 80px; flex-shrink: 0; }
+  .day-track { flex: 1; background: var(--bg-secondary); border-radius: 4px; height: 18px; overflow: hidden; }
+  .day-fill { height: 100%; border-radius: 4px; background: #3266ad; transition: width 0.4s; }
+  .day-count { font-size: 12px; color: var(--text-secondary); width: 24px; text-align: right; }
+  .hour-grid { display: grid; grid-template-columns: repeat(24, 1fr); gap: 2px; margin-top: 8px; }
+  .hour-cell { height: 28px; border-radius: 3px; background: var(--bg-secondary); }
+  .hour-label-row { display: grid; grid-template-columns: repeat(24, 1fr); gap: 2px; margin-top: 4px; }
+  .hour-label { font-size: 9px; color: var(--text-tertiary); text-align: center; }
+  .alert-row { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; padding: 10px 0; border-bottom: 0.5px solid var(--border); }
+  .alert-row:last-child { border-bottom: none; }
+  .alert-title { font-size: 14px; font-weight: 500; margin-bottom: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .alert-meta { font-size: 12px; color: var(--text-secondary); }
+  .alert-reason { font-size: 12px; color: var(--text-tertiary); margin-top: 2px; }
+  .badge { display: inline-block; font-size: 11px; padding: 2px 8px; border-radius: var(--radius-md); font-weight: 500; }
+  .badge-buy { background: var(--bg-success); color: var(--text-success); }
+  .badge-unsure { background: var(--bg-warning); color: var(--text-warning); }
+  .view-link { font-size: 11px; color: var(--text-secondary); text-decoration: none; display: flex; align-items: center; gap: 3px; margin-top: 4px; }
+  .view-link:hover { color: var(--text-primary); }
+  .empty { text-align: center; padding: 3rem; color: var(--text-tertiary); font-size: 14px; }
+  .hint { font-size: 12px; color: var(--text-tertiary); margin-top: 8px; }
+  #content { display: none; }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>📚 Book Bot — Alert Log Viewer</h1>
+
+  <div class="upload-area" onclick="document.getElementById('file-in').click()">
+    <i class="ti ti-upload" style="font-size:28px;color:var(--text-tertiary)"></i>
+    <div class="upload-text">Click to upload your alert_log.json</div>
+    <div class="upload-sub">Found in your Book Bot project folder</div>
+  </div>
+  <input type="file" id="file-in" accept=".json" style="display:none" onchange="loadFile(this)">
+
+  <div id="content">
+    <div class="metric-grid">
+      <div class="metric"><div class="metric-label">Total alerts</div><div class="metric-value" id="m-total">0</div></div>
+      <div class="metric"><div class="metric-label">BUY signals</div><div class="metric-value" id="m-buy" style="color:var(--text-success)">0</div></div>
+      <div class="metric"><div class="metric-label">UNSURE signals</div><div class="metric-value" id="m-unsure" style="color:var(--text-warning)">0</div></div>
+      <div class="metric"><div class="metric-label">Best day</div><div class="metric-value" id="m-best-day" style="font-size:16px">—</div></div>
+    </div>
+
+    <div class="card">
+      <div class="section-title">Alerts by day of week</div>
+      <div id="day-chart"></div>
+    </div>
+
+    <div class="card">
+      <div class="section-title">Alerts by hour of day</div>
+      <div class="hour-grid" id="hour-grid"></div>
+      <div class="hour-label-row" id="hour-labels"></div>
+      <div class="hint">Darker = more alerts fired at that hour &nbsp;·&nbsp; Hover a cell to see the count</div>
+    </div>
+
+    <div class="card">
+      <div class="section-title">All alerts — newest first</div>
+      <div id="alert-list"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+function loadFile(input) {
+  const file = input.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    try {
+      const data = JSON.parse(e.target.result);
+      render(data.alerts || []);
+      document.getElementById('content').style.display = 'block';
+    } catch(err) {
+      alert('Could not parse file — make sure it is alert_log.json from the Book Bot folder');
+    }
+  };
+  reader.readAsText(file);
+}
+
+function render(alerts) {
+  const buys   = alerts.filter(a => a.action === 'BUY').length;
+  const unsure = alerts.filter(a => a.action === 'UNSURE').length;
+  document.getElementById('m-total').textContent  = alerts.length;
+  document.getElementById('m-buy').textContent    = buys;
+  document.getElementById('m-unsure').textContent = unsure;
+
+  const days = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
+  const dayCounts = {};
+  days.forEach(d => dayCounts[d] = 0);
+  alerts.forEach(a => { if (a.day && dayCounts[a.day] !== undefined) dayCounts[a.day]++; });
+  const maxDay  = Math.max(...Object.values(dayCounts), 1);
+  const bestDay = days.reduce((a,b) => dayCounts[a] >= dayCounts[b] ? a : b);
+  document.getElementById('m-best-day').textContent = bestDay.slice(0,3);
+
+  document.getElementById('day-chart').innerHTML = days.map(d => {
+    const c = dayCounts[d];
+    const p = Math.round((c / maxDay) * 100);
+    return `<div class="day-bar"><span class="day-label">${d}</span><div class="day-track"><div class="day-fill" style="width:${p}%"></div></div><span class="day-count">${c}</span></div>`;
+  }).join('');
+
+  const hourCounts = Array(24).fill(0);
+  alerts.forEach(a => { if (a.hour !== undefined) hourCounts[a.hour]++; });
+  const maxHour = Math.max(...hourCounts, 1);
+  document.getElementById('hour-grid').innerHTML = hourCounts.map((c,h) => {
+    const alpha = (0.08 + (c / maxHour) * 0.85).toFixed(2);
+    return `<div class="hour-cell" style="background:rgba(50,102,173,${alpha})" title="${h}:00 — ${c} alert${c!==1?'s':''}"></div>`;
+  }).join('');
+  document.getElementById('hour-labels').innerHTML = Array.from({length:24},(_,h) =>
+    `<span class="hour-label">${h}</span>`).join('');
+
+  const list   = document.getElementById('alert-list');
+  const recent = [...alerts].reverse();
+  if (!recent.length) { list.innerHTML = '<div class="empty">No alerts logged yet</div>'; return; }
+  list.innerHTML = recent.map(a => `
+    <div class="alert-row">
+      <div style="flex:1;min-width:0">
+        <div class="alert-title">${a.title || '—'}</div>
+        <div class="alert-meta">${a.timestamp || ''} &nbsp;·&nbsp; ${a.day || ''} &nbsp;·&nbsp; Score: ${a.score || '—'} &nbsp;·&nbsp; £${a.price || '—'}</div>
+        ${a.image_reason ? `<div class="alert-reason">${a.image_reason}</div>` : ''}
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px;flex-shrink:0">
+        <span class="badge ${a.action==='BUY'?'badge-buy':'badge-unsure'}">${a.action}</span>
+        ${a.url ? `<a class="view-link" href="${a.url}" target="_blank">View listing <i class="ti ti-external-link" style="font-size:11px"></i></a>` : ''}
+      </div>
+    </div>`).join('');
+}
+</script>
+</body>
+</html>
