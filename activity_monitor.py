@@ -127,6 +127,22 @@ def add_to_watchlist(item: dict):
         del watched[oldest_id]
 
     initial_favs = int(item.get("favourites", 0) or 0)
+
+    # Flag priority genre listings so _should_alert can use a lower spike threshold
+    from config import (
+        PRIORITY_GENRE_NATURAL_HISTORY,
+        PRIORITY_GENRE_ASTRONOMY,
+        PRIORITY_GENRE_OCCULT,
+    )
+    _combined = (
+        (item.get("title") or "") + " " + (item.get("description") or "")
+    ).lower()
+    is_priority = (
+        any(g.lower() in _combined for g in PRIORITY_GENRE_NATURAL_HISTORY) or
+        any(g.lower() in _combined for g in PRIORITY_GENRE_ASTRONOMY) or
+        any(g.lower() in _combined for g in PRIORITY_GENRE_OCCULT)
+    )
+
     watched[item_id] = {
         "title":            item.get("title", ""),
         "price":            price,
@@ -139,6 +155,7 @@ def add_to_watchlist(item: dict):
         "peak_rate":        0.0,   # highest favs/hour seen — stored for alert context
         "last_checked":     datetime.now(tz=timezone.utc).isoformat(),
         "alerted":          False,
+        "priority_genre":   is_priority,  # lower spike threshold for natural history etc.
     }
     _save(watched)
 
@@ -197,7 +214,8 @@ def _should_alert(entry: dict, current_favs: int, scan_growth: int) -> tuple[boo
     if rate >= FAV_RATE_ALERT and (current_favs - entry["first_favourites"]) >= 2:
         return True, f"rate {rate:.1f}/hr"
 
-    if scan_growth >= FAV_SPIKE_ALERT:
+    spike_threshold = FAV_SPIKE_ALERT - 1 if entry.get("priority_genre") else FAV_SPIKE_ALERT
+    if scan_growth >= spike_threshold:
         return True, f"spike +{scan_growth} this scan"
 
     if current_favs >= _price_threshold(price):

@@ -128,6 +128,213 @@
         "🔍 Little or no description",
         "🔍 Publisher not identified by seller"
       ]
+    },
+    {
+      "timestamp": "2026-05-26 12:59",
+      "date": "2026-05-26",
+      "time": "12:59",
+      "day": "Tuesday",
+      "hour": 12,
+      "action": "UNSURE",
+      "title": "Beautiful antique 1800s bible",
+      "price": 12.99,
+      "score": 6,
+      "url": "https://www.vinted.co.uk/items/9010294971",
+      "image_reason": "API error 401",
+      "signals": [
+        "👍 Condition: Good (+1)",
+        "📖 Antique",
+        "📅 Sweet spot year: 1800",
+        "🔍 Vague short title",
+        "🔍 Little or no description",
+        "🔍 Publisher not identified by seller",
+        "🐌 Slow seller: Bible (-1)"
+      ]
+    },
+    {
+      "timestamp": "2026-05-26 13:39",
+      "date": "2026-05-26",
+      "time": "13:39",
+      "day": "Tuesday",
+      "hour": 13,
+      "action": "BUY",
+      "title": "Recollections Of Oxford G.V. Cox University History 1870 antique hardback book",
+      "price": 14.99,
+      "score": 7,
+      "url": "https://www.vinted.co.uk/items/8864893941",
+      "image_reason": "Recollections of Oxford by G.V. Cox — deep blue cloth with gilt Oxford skyline medallion on cover, gilt spine lettering, period typography. Niche Victorian Oxford interest, decorative boards intact.",
+      "signals": [
+        "👍 Condition: Good (+1)",
+        "📖 Antique",
+        "📖 Oxford",
+        "📅 Sweet spot year: 1870",
+        "🔍 Little or no description",
+        "🔍 Publisher not identified by seller"
+      ]
+    },
+    {
+      "timestamp": "2026-05-26 13:39",
+      "date": "2026-05-26",
+      "time": "13:39",
+      "day": "Tuesday",
+      "hour": 13,
+      "action": "BUY",
+      "title": "Antique Books - horae subsecivae john brown 1900 adam & charles black - leather",
+      "price": 10.0,
+      "score": 6,
+      "url": "https://www.vinted.co.uk/items/8605550450",
+      "image_reason": "Title page: John Brown, Adam & Charles Black, 1901. Complete 3-volume set, ornate embossed crimson spines with gilt lettering, decorated title page border. Edwardian collectible set.",
+      "signals": [
+        "⭐ Condition: Very Good (+2)",
+        "📖 Antique",
+        "📅 Edwardian era: 1900",
+        "🔍 Little or no description",
+        "🔍 Publisher not identified by seller"
+      ]
+    },
+    {
+      "timestamp": "2026-05-26 14:21",
+      "date": "2026-05-26",
+      "time": "14:21",
+      "day": "Tuesday",
+      "hour": 14,
+      "action": "BUY",
+      "title": "1893 First Edition Hardback - The Gayworthys - A Story of Threads and Thrums",
+      "price": 10.0,
+      "score": 9,
+      "url": "https://www.vinted.co.uk/items/8569379933",
+      "image_reason": "Title page: Frederick Warne & Co, 1893, Warne's Star Series. Cover: rich red cloth, gilt pictorial decoration, ornate spine. Good condition.",
+      "signals": [
+        "⭐ Condition: Very Good (+2)",
+        "🥇 First edition (+2)",
+        "📖 First Edition",
+        "📅 Sweet spot year: 1893",
+        "🔍 Little or no description",
+        "🔍 Publisher not identified by seller"
+      ]
+    },
+    {
+      "timestamp": "2026-05-26 14:21",
+      "date": "2026-05-26",
+      "time": "14:21",
+      "day": "Tuesday",
+      "hour": 14,
+      "action": "BUY",
+      "title": "Brief Biographical Dictionary Rev Charles Hole Macmillan 1865 Antique HC Rebound",
+      "price": 12.0,
+      "score": 6,
+      "url": "https://www.vinted.co.uk/items/8478103605",
+      "image_reason": "Title page: Macmillan & Co. 1865. Full leather spine with raised bands, gilt label, beautiful marbled endpapers. Fine Victorian reference binding.",
+      "signals": [
+        "👍 Condition: Good (+1)",
+        "🏛️ Publisher: Macmillan",
+        "📖 Antique",
+        "📅 Sweet spot year: 1865",
+        "🔍 Little or no description",
+        "🐌 Slow seller: Dictionary (-1)"
+      ]
+    },
+    {
+      "timestamp": "2026-05-26 18:36",
+      "date": "2026-05-26",
+      "time": "18:36",
+      "day": "Tuesday",
+      "hour": 18,
+      "action": "UNSURE",
+      "title": "Original Lloyds 1896 Natural History of Butterflies Plate",
+      "price": 9.0,
+      "score": 9,
+      "url": "https://www.vinted.co.uk/items/9013324061",
+      "image_reason": "API error 502",
+      "signals": [
+        "⭐ Condition: Very Good (+2)",
+        "🌿 PRIORITY genre: Natural History (+3)",
+        "📅 Sweet spot year: 1896",
+        "🔍 Little or no description",
+        "🔍 Publisher not identified by seller"
+      ]
+    },
+    {
+      "timestamp": "2026-05-26 18:37",
+      "date": "2026-05-26",
+      "time": "18:37",
+      "day": "Tuesday",
+      "hour": 18,
+      "action": "UNSURE",
+      "title": "True to the last - Evelyn Everett Green 1895 antique hardback book",
+      "price": 12.0,
+      "score": 6,
+      "url": "https://www.vinted.co.uk/items/9012485304",
+      "image_reason": "API error 401",
+      "signals": [
+        "👍 Condition: Good (+1)",
+        "📖 Antique",
+        "📅 Sweet spot year: 1895",
+        "🔍 Little or no description",
+        "🔍 Publisher not identified by seller"
+      ]
+    },
+    {
+      "timestamp": "2026-05-26 18:37",
+      "date": "2026-05-26",
+      "time": "18:37",
+      "day": "Tuesday",
+      "hour": 18,
+      "action": "UNSURE",
+      "title": "Sir Aylmers Heir By Evelyn Everett Green Antique 1896 Hardback Book",
+      "price": 6.0,
+      "score": 6,
+      "url": "https://www.vinted.co.uk/items/9010580325",
+      "image_reason": "API error 401",
+      "signals": [
+        "👍 Condition: Good (+1)",
+        "📖 Antique",
+        "📅 Sweet spot year: 1896",
+        "🔍 Little or no description",
+        "🔍 Publisher not identified by seller"
+      ]
+    },
+    {
+      "timestamp": "2026-05-26 21:20",
+      "date": "2026-05-26",
+      "time": "21:20",
+      "day": "Tuesday",
+      "hour": 21,
+      "action": "BUY",
+      "title": "1882 Swiss Family Robinson Antiquarian Illustrated Vintage Book",
+      "price": 20.0,
+      "score": 8,
+      "url": "https://www.vinted.co.uk/items/9014503378",
+      "image_reason": "Thomas Nelson & Sons publisher, teal pictorial gilt boards with shipwreck scene, spine reads '300 Illustrations / Unabridged Translation' — classic Victorian illustrated edition, strong resale appeal.",
+      "signals": [
+        "⭐ Condition: Very Good (+2)",
+        "📖 Vintage",
+        "📖 Illustrated",
+        "📅 Sweet spot year: 1882",
+        "🔍 Little or no description",
+        "🔍 Publisher not identified by seller"
+      ]
+    },
+    {
+      "timestamp": "2026-05-26 22:48",
+      "date": "2026-05-26",
+      "time": "22:48",
+      "day": "Tuesday",
+      "hour": 22,
+      "action": "UNSURE",
+      "title": "Bundle of vintage hardback books from 1800s - early 1900s",
+      "price": 20.0,
+      "score": 6,
+      "url": "https://www.vinted.co.uk/items/8914491240",
+      "image_reason": "API error 401",
+      "signals": [
+        "⚠️ Condition: Satisfactory (-1)",
+        "📖 Vintage",
+        "📅 Sweet spot year: 1800",
+        "🔍 Little or no description",
+        "🔍 Publisher not identified by seller",
+        "📦 Bundle of old/vintage books"
+      ]
     }
   ]
 }

@@ -172,15 +172,43 @@ def score_item(item: dict) -> dict:
     is_natural_history = any(g.lower() in combined for g in PRIORITY_GENRE_NATURAL_HISTORY)
     is_occult          = any(g.lower() in combined for g in PRIORITY_GENRE_OCCULT)
 
-    if is_astronomy:
+    # Genre bonus only fires at full +3 when there is at least one corroborating
+    # Victorian signal — a year hint, an age word, a known author/publisher, or
+    # an illustration/binding signal. Without this gate, bare "Astronomy" or
+    # "The Occult" score 10 with zero evidence of being a Victorian book.
+    _AGE_CORROBORATION = {
+        "old", "vintage", "antique", "victorian", "edwardian",
+        "hardback", "hardcover", "leather", "gilt", "illustrated",
+        "illustrations", "plates", "cloth", "binding", "edition",
+        "1800", "1801", "1802", "1803", "1804", "1805", "1806",
+        "1807", "1808", "1809", "1810", "1820", "1830", "1840",
+        "1850", "1860", "1870", "1880", "1890",
+    }
+    _has_age_corroboration = (
+        item.get("year_hint") is not None or
+        any(w in combined for w in _AGE_CORROBORATION)
+    )
+
+    if is_astronomy and _has_age_corroboration:
         score += 3
         signals.append("🔭 PRIORITY genre: Astronomy (+3)")
-    if is_natural_history:
+    elif is_astronomy:
+        score += 1
+        signals.append("🔭 Astronomy (no age signal, +1)")
+
+    if is_natural_history and _has_age_corroboration:
         score += 3
         signals.append("🌿 PRIORITY genre: Natural History (+3)")
-    if is_occult:
+    elif is_natural_history:
+        score += 1
+        signals.append("🌿 Natural History (no age signal, +1)")
+
+    if is_occult and _has_age_corroboration:
         score += 3
         signals.append("🔮 PRIORITY genre: Occult/Supernatural (+3)")
+    elif is_occult:
+        score += 1
+        signals.append("🔮 Occult (no age signal, +1)")
 
     # ── Other genre signals ───────────────────────────────────────────────────
     if not is_astronomy and not is_natural_history and not is_occult:
@@ -245,9 +273,43 @@ def score_item(item: dict) -> dict:
         signals.append("🔍 Publisher not identified by seller")
 
     # Cheap + vague combo — the classic undervalued find pattern
-    if price <= 8.0 and title_words <= 6 and len(description) < 50:
+    if price <= 8.0 and title_words <= 10 and len(description) < 50:
         score += 1
         signals.append("💎 Cheap + vague = likely undervalued")
+
+    # ── GOLDEN PATTERN: vague title + value buried in description only ────────
+    # "Old book" / "Antique hardback" as title, but description contains the
+    # publisher, author or year the seller wrote without realising the value.
+    # This is the Frank Buckland pattern — seller didn't know what they had.
+    # Only fires when the valuable signal is in the DESCRIPTION but NOT the title.
+    title_lower = title.lower()
+    desc_lower  = description.lower()
+
+    # Publisher in description but not title
+    _pub_in_desc  = any(pub.lower() in desc_lower  for pub in PUBLISHER_SIGNALS)
+    _pub_in_title = any(pub.lower() in title_lower for pub in PUBLISHER_SIGNALS)
+    if _pub_in_desc and not _pub_in_title and title_words <= 10:
+        score += 2
+        signals.append("💡 Publisher buried in description only (+2)")
+
+    # Known author in description but not title
+    from config import AUTHOR_WHITELIST
+    _auth_in_desc  = any(a.lower() in desc_lower  for a in AUTHOR_WHITELIST)
+    _auth_in_title = any(a.lower() in title_lower for a in AUTHOR_WHITELIST)
+    if _auth_in_desc and not _auth_in_title and title_words <= 10:
+        score += 2
+        signals.append("💡 Known author buried in description only (+2)")
+
+    # Victorian year in description but not title
+    import re as _re
+    _YEAR_RE = _re.compile(r'(?<!\d)(1[89]\d{2})(?!\d)')
+    _years_in_desc  = [int(y) for y in _YEAR_RE.findall(desc_lower)]
+    _years_in_title = [int(y) for y in _YEAR_RE.findall(title_lower)]
+    _desc_has_victorian_year  = any(1800 <= y <= 1910 for y in _years_in_desc)
+    _title_has_victorian_year = any(1800 <= y <= 1910 for y in _years_in_title)
+    if _desc_has_victorian_year and not _title_has_victorian_year and title_words <= 10:
+        score += 2
+        signals.append("💡 Victorian year buried in description only (+2)")
 
     # Bundle of old/vintage books — house clearance pattern, high unawareness signal
     bundle_words = {"bundle", "joblot", "lot", "collection", "stack", "pile"}
@@ -501,6 +563,14 @@ def hard_block(item: dict) -> tuple[bool, str]:
         # Subscription box merchandise brands
         "fairyloot", "fairy loot",
         "illumicrate", "owlcrate", "owl crate",
+        # Modern science/space celebrities — score heavily on astronomy signals
+        "tim peake",                 # British astronaut, modern books
+        "brian cox",                 # modern physicist/TV presenter
+        "patrick moore",             # Observer's series, Sky at Night — post-Victorian
+        "stephen hawking",           # modern physicist
+        "carl sagan",                # modern astronomer
+        # Modern children's authors often caught by nature/animal signals
+        "enid blyton",               # published 1920s onwards
     ]
     title_lower = _normalise(item.get("title") or "")
     if any(phrase in title_lower for phrase in NON_BOOK_ITEM_SIGNALS):
@@ -579,6 +649,10 @@ def hard_block(item: dict) -> tuple[bool, str]:
         "blank journal", "lined journal", "dot journal",
         "bullet journal", "gratitude journal", "fitness journal",
         "planner book",
+        "astronomy logbook", "astronomy log book",
+        "stargazing logbook", "stargazing log book",
+        "night sky logbook", "night sky log book",
+        "sky tracker",        # observation notebooks
     ]
     if any(phrase in title_lower for phrase in STATIONERY_PHRASES):
         return True, "Stationery/blank notebook (not a collectible book)"
@@ -765,6 +839,9 @@ def hard_block(item: dict) -> tuple[bool, str]:
         # Observer's Books — 1960s-80s Warne/Penguin pocket series
         "observers book", "observer's book",
         "the observers book", "the observer's book",
+        "observers astronomy", "observer's astronomy",  # Warne pocket series 1950s+
+        "observers birds", "observer's birds",
+        "observers wildlife", "observer's wildlife",
         # Osprey — modern military history publisher, despite historical dates in titles
         "osprey campaign", "osprey military", "osprey publishing",
         "osprey aviation", "osprey men-at-arms", "osprey warrior",
@@ -785,13 +862,6 @@ def hard_block(item: dict) -> tuple[bool, str]:
         "slot machine", "slot machines", "fruit machine",
         "history of photography", "history of cinema", "history of film",
         "history of football", "history of cricket", "history of rugby",
-        # Children's TV franchises — never Victorian
-        "sesame street", "elmo",            # Sesame Street franchise (1969–)
-        "ren & stimpy", "ren and stimpy",   # Nickelodeon comic/magazine (1992–)
-        # Disney Twisted Tales series — modern YA franchise novels
-        "as old as time",                   # Twisted Tales: Beauty & the Beast tie-in
-        "mirror mirror twisted",
-        "go the distance",                  # Twisted Tales: Hercules
         # Sticker / activity / novelty books
         "sticker book", "sticker activity",
         "matte sticker", "gloss sticker",  # art/merch stickers sold as collectibles

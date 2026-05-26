@@ -123,5 +123,95 @@
     "action": "SKIP",
     "reason": "Pilgrim's Progress is theological/religious allegory — hard skip category. Spine also heavily deteriorated.",
     "analysed": "2026-05-25 22:16"
+  },
+  "9010294971": {
+    "action": "UNSURE",
+    "reason": "API error 401",
+    "analysed": "2026-05-26 12:59"
+  },
+  "8822457624": {
+    "action": "SKIP",
+    "reason": "Modern book — dust jacket present, bright white paper, contemporary design. Dan Jones & Marina Amaral, clearly post-2010 publication.",
+    "analysed": "2026-05-26 13:37"
+  },
+  "8925770609": {
+    "action": "SKIP",
+    "reason": "Walter Scott fiction by A&C Black — common reprinted series, low collector demand, no gilt, plain embossed cover only. Poor resale category.",
+    "analysed": "2026-05-26 13:39"
+  },
+  "8864893941": {
+    "action": "BUY",
+    "reason": "Recollections of Oxford by G.V. Cox — deep blue cloth with gilt Oxford skyline medallion on cover, gilt spine lettering, period typography. Niche Victorian Oxford interest, decorative boards intact.",
+    "analysed": "2026-05-26 13:39"
+  },
+  "8605550450": {
+    "action": "BUY",
+    "reason": "Title page: John Brown, Adam & Charles Black, 1901. Complete 3-volume set, ornate embossed crimson spines with gilt lettering, decorated title page border. Edwardian collectible set.",
+    "analysed": "2026-05-26 13:39"
+  },
+  "9011115388": {
+    "action": "SKIP",
+    "reason": "Head of spine badly torn/rolled (photo 3). Plain brown cloth with no pictorial decoration limits resale appeal despite gilt spine lettering and Lippincott publisher.",
+    "analysed": "2026-05-26 14:20"
+  },
+  "9011028761": {
+    "action": "SKIP",
+    "reason": "Photo 5 shows board completely detached — spine split with cover hanging off. Hard skip on damage grounds.",
+    "analysed": "2026-05-26 14:20"
+  },
+  "9010914262": {
+    "action": "SKIP",
+    "reason": "Title 'A Guide, A Comforter' is devotional/religious content — theology hard skip category. Also tiny pamphlet-scale volume.",
+    "analysed": "2026-05-26 14:20"
+  },
+  "8569379933": {
+    "action": "BUY",
+    "reason": "Title page: Frederick Warne & Co, 1893, Warne's Star Series. Cover: rich red cloth, gilt pictorial decoration, ornate spine. Good condition.",
+    "analysed": "2026-05-26 14:21"
+  },
+  "8530230853": {
+    "action": "SKIP",
+    "reason": "Thin promotional booklet/pamphlet ('Little Blue Book for Scholars'), not a proper book volume. Spine under 1cm, advertiser-sponsored giveaway.",
+    "analysed": "2026-05-26 14:21"
+  },
+  "8478103605": {
+    "action": "BUY",
+    "reason": "Title page: Macmillan & Co. 1865. Full leather spine with raised bands, gilt label, beautiful marbled endpapers. Fine Victorian reference binding.",
+    "analysed": "2026-05-26 14:21"
+  },
+  "8287308146": {
+    "action": "SKIP",
+    "reason": "Heavy water staining on endpapers (photo 3) — large tide marks disqualify this despite attractive blue gilt boards and Willoughby period printing.",
+    "analysed": "2026-05-26 16:43"
+  },
+  "9013324061": {
+    "action": "UNSURE",
+    "reason": "API error 502",
+    "analysed": "2026-05-26 18:36"
+  },
+  "9012485304": {
+    "action": "UNSURE",
+    "reason": "API error 401",
+    "analysed": "2026-05-26 18:37"
+  },
+  "9010580325": {
+    "action": "UNSURE",
+    "reason": "API error 401",
+    "analysed": "2026-05-26 18:37"
+  },
+  "8957492072": {
+    "action": "SKIP",
+    "reason": "Bound periodical volume of Boy's Own Paper issues (1891). Periodical compilations, not a standalone book; plain undecorated boards, no gilt, low resale appeal.",
+    "analysed": "2026-05-26 19:28"
+  },
+  "9014503378": {
+    "action": "BUY",
+    "reason": "Thomas Nelson & Sons publisher, teal pictorial gilt boards with shipwreck scene, spine reads '300 Illustrations / Unabridged Translation' — classic Victorian illustrated edition, strong resale appeal.",
+    "analysed": "2026-05-26 21:20"
+  },
+  "8914491240": {
+    "action": "UNSURE",
+    "reason": "API error 401",
+    "analysed": "2026-05-26 22:48"
   }
 }

@@ -9,7 +9,7 @@ TELEGRAM_CHAT_ID = "5737361602"
 VINTED_COOKIE = "v_udt=am1CQldZcTVuU213Znp4R25EVDBySkNSdEsxdS0tZjdTeVFlc0tqNEwyV2dkdC0tanp5dm5sdjNPTEN0eVpwTlNDVWQvUT09; anon_id=91761982-52b2-451b-bf75-13395b91c575; anonymous-locale=en-uk-fr; anonymous-iso-locale=en-GB; non_dot_com_www_domain_cookie_buster=1; is_shipping_fees_applied_info_banner_dismissed=false; v_sid=6a3ec4325c9f5c376e2b7384327927d9; domain_selected=true; OptanonAlertBoxClosed=2026-05-15T09:29:05.236Z; eupubconsent-v2=CQkP0dgQkP0dgAcABBENCfFsAP_gAEPgAAwILNtR_G__bWlr-Tb3abpkeYxP99hr7sQxBgbIkm4FzLvW7JwCx2EZNAzatiIKmRIAu3TBIQNlHIDURUCgKIgFryDMaEyUoTNKJ6BkiBMRI2JQCFxvm4pjWQCY4ur_5kc1mB-N7dr82dzyy4hHn3a5fmS1UJCcIYetDfn8ZBKT-9IEd-x8v4v4_EbpEm8eS1n_pGtp4jc6YlM_dBmxt-TyffzPn_f7k_e7X_vc_n3zv8oXH7rr_4LMgAmGh0QRlkQCBAoCAECABQVhABQIAgAASAogIATBgQ5AwAXWESAEAKAAYIAQAAgwABAAAJAAhEAEABAIAQIBAoAAwAIAgIAGBgADABQiAQAAgOgYpgQQCBYAJEZUBpgQgAJBAS2VCCQBAgrhCkWOAQQIiYKAAAEAAoAAAB8LAQklBKxIIAuILoAEAAAAKIEGBFIWYAgoDNFoKwJOAyNMASPMEiSnQRAEwQkZBkQmqCQeKYogAAAA.f_wACHwAAAAA.ILNtR_G__bXlv-Tb36bpkeYxf99hr7sQxBgbIsm4FzLvW7JwC32EbNEzatiYKmRIAu3TBIQNtHIjURUChKIgVrzDsaEyUoTtKJ-BkiDMRY2JQCFxvm4pjWQCZ4ur_50d9mR-N7dr-2dzyy5hnv3a9fuS1UJicKYetHfn8ZBKT-_IU9_x-_4v4_MbpEm8eS1v_tGtt43c64tP_dpuxt-Tyffzfv_f72_e7X__c__33_-qXX_r7_4A; OTAdditionalConsentString=2~20.43.55.57.61.70.83.89.93.108.117.122.124.135.143.144.147.149.159.161.184.192.196.211.228.230.236.239.255.259.266.272.286.291.311.313.314.320.322.323.327.358.367.370.371.385.407.415.424.429.430.436.445.469.486.491.494.495.522.523.540.550.560.568.574.576.584.587.591.621.723.737.797.798.803.820.827.839.864.899.904.922.938.955.959.979.981.985.986.1003.1027.1031.1033.1046.1047.1048.1051.1053.1067.1092.1095.1097.1099.1107.1109.1126.1135.1143.1149.1152.1162.1166.1186.1188.1192.1205.1215.1220.1226.1227.1230.1252.1268.1270.1276.1284.1290.1301.1307.1312.1329.1342.1345.1356.1365.1403.1415.1416.1419.1421.1423.1440.1449.1455.1495.1512.1514.1516.1525.1540.1548.1555.1558.1570.1577.1579.1583.1584.1598.1603.1616.1638.1651.1653.1659.1660.1667.1677.1678.1682.1697.1699.1703.1712.1716.1720.1721.1725.1732.1735.1745.1750.1753.1765.1782.1786.1800.1808.1810.1825.1827.1832.1838.1840.1843.1845.1859.1870.1878.1880.1882.1889.1898.1911.1917.1928.1929.1942.1944.1958.1962.1963.1964.1967.1968.1969.1978.1985.1987.2003.2027.2035.2038.2039.2044.2047.2052.2056.2064.2068.2069.2072.2074.2084.2088.2090.2103.2107.2109.2115.2124.2130.2133.2135.2137.2140.2141.2147.2156.2166.2177.2186.2205.2213.2216.2219.2220.2222.2223.2224.2225.2227.2234.2251.2253.2271.2275.2279.2282.2295.2299.2309.2312.2316.2322.2325.2328.2331.2335.2336.2343.2354.2358.2359.2370.2373.2376.2377.2400.2403.2405.2406.2410.2411.2414.2415.2416.2418.2425.2427.2440.2447.2453.2461.2465.2468.2472.2477.2484.2486.2488.2498.2506.2510.2517.2526.2527.2531.2532.2534.2535.2542.2552.2559.2564.2567.2568.2569.2571.2572.2575.2577.2579.2583.2584.2589.2595.2596.2604.2605.2608.2609.2610.2612.2614.2621.2624.2627.2628.2629.2633.2636.2642.2643.2645.2646.2650.2651.2652.2656.2657.2658.2660.2661.2669.2670.2677.2681.2684.2686.2687.2689.2690.2695.2698.2713.2714.2729.2739.2767.2768.2770.2772.2778.2784.2787.2791.2792.2798.2801.2805.2812.2813.2814.2816.2817.2821.2822.2824.2827.2830.2831.2832.2833.2834.2838.2839.2844.2846.2849.2850.2852.2854.2860.2862.2863.2865.2867.2869.2872.2874.2875.2878.2880.2881.2882.2884.2886.2887.2888.2889.2891.2893.2894.2895.2897.2898.2900.2901.2908.2909.2916.2917.2918.2920.2922.2923.2927.2929.2930.2931.2940.2941.2947.2949.2950.2956.2958.2961.2963.2964.2965.2966.2968.2970.2972.2973.2974.2975.2979.2980.2981.2983.2985.2986.2987.2994.2995.2997.2999.3000.3001.3002.3003.3005.3008.3009.3010.3012.3016.3017.3018.3019.3023.3028.3031.3034.3038.3043.3051.3052.3053.3055.3058.3059.3063.3066.3070.3073.3074.3075.3076.3077.3089.3090.3093.3094.3095.3097.3099.3100.3106.3107.3109.3112.3117.3119.3126.3127.3128.3130.3133.3135.3136.3137.3145.3149.3150.3151.3153.3155.3163.3165.3167.3169.3172.3173.3177.3182.3183.3184.3185.3186.3187.3188.3189.3190.3194.3196.3200.3201.3209.3210.3211.3213.3214.3215.3217.3218.3222.3223.3225.3226.3227.3228.3230.3231.3233.3234.3235.3236.3237.3238.3240.3244.3245.3250.3251.3253.3254.3257.3260.3266.3270.3272.3281.3286.3288.3289.3290.3292.3293.3296.3299.3300.3306.3307.3309.3314.3315.3316.3318.3323.3324.3328.3330.3331.3531.3631.3731.3831.4131.4331.4531.4631.4731.4831.5231.6931.7131.7235.7831.7931.8931.9731.10231.10631.10831.11031.11531.11631.13431.13632.14034.14133.14237.14332.15731.16831.16931.21233.21731.23031.25131.25931.26031.26631.26831.27731.27831.28031.28332.28731.28831.29631.30331.30532.30732.32531.33931.34231.34631.34731.36831.39131.39531.40632.41131.41531.43631.43731.43831.45931.47232.47531.48131.49231.49332.49431.50831.52831.54231.56831.56931.57131.57231.57531~dv; _gcl_au=1.1.2076337829.1778837429; __ps_r=https://www.google.com/; __ps_lu=https://www.vinted.co.uk/; __ps_did=pscrb_1dd00416-7dd1-4a95-cde6-02d00b73a748; __ps_fva=1778837429468; _ga=GA1.1.640137307.1778837429; _fbp=fb.2.1778837429681.75417560529669780; _pubcid=cf43ab08-88d4-45c2-8fe1-a8b7f031130b; _cc_id=1bfeeaec8cb5015f2fbe940b5f8bd647; __gads=ID=b883b2ed7f618376:T=1778918774:RT=1778918774:S=ALNI_MZ4lgjn55E95XCjU3LVwFUiqGueag; __gpi=UID=0000138e7a0c0c55:T=1778918774:RT=1778918774:S=ALNI_MbVFGR7KXgvAJ2wHQRMWkWO8YUPoQ; __eoi=ID=fd3805eaa42b07ee:T=1778918774:RT=1778918774:S=AA-AfjawYaZpJaLQHQRgvVs94-4_; consent_version=eu; panoramaId_expiry=1780050508012; panoramaId=bdcd173b3e73435571569897e70f4945a70287603fc10be2ade5e36af75b91af; panoramaIdType=panoIndiv; refresh_token_web=eyJhbGciOiJQUzI1NiIsImtpZCI6IkU1N1lkcnVIcGxBanUyY05vMURvckgzajI3QnU1LXNfT1A1UHdQaWhuNU0ifQ.eyJhcHBfaWQiOjQsImF1ZCI6ImZyLmNvcmUuYXBpLnZpbnRlZC5jb20iLCJjbGllbnRfaWQiOiJ3ZWIiLCJleHAiOjE3Nzk2NjMxNjQsImlhdCI6MTc3OTYxOTk2MywiaXNzIjoidmludGVkLWlhbS1zZXJ2aWNlIiwicHVycG9zZSI6InJlZnJlc2giLCJzY29wZSI6InB1YmxpYyIsInNpZCI6ImQ5ZTU4M2YzLTE3Nzk2MTk5NjMifQ.yOnjFmuQztKNDSobPbeXpYeo-1Qzxd6NyCThh71uhbvTZnRKVLW933lym-ENAgyRisqAiK3hWfUgV0JvREtUpXudcx_KSmlYjthOxZo34McRmTwMWCm0F2ajo5dps6Nt-iAddon8SXNGTH-3KgoBL3jPSJA2sIb7oODN-dREdyyCqlkdLke9xXNnbo__a4pjU1EmLsWCdwKsu-4hinJbOIVpyc6_crIZgkuCuHKg94PHsGHQS6cpoclSk3-nwWz93F9HkrHwPwjoSocO1SJwbjvX6iQHGw0ihjAj2Q57Tmse_2PfvvIlUje0umiDl3hZ_iwftn71NAtr24LJ3S-1yg; access_token_web=eyJhbGciOiJQUzI1NiIsImtpZCI6IkU1N1lkcnVIcGxBanUyY05vMURvckgzajI3QnU1LXNfT1A1UHdQaWhuNU0ifQ.eyJhcHBfaWQiOjQsImF1ZCI6ImZyLmNvcmUuYXBpLnZpbnRlZC5jb20iLCJjbGllbnRfaWQiOiJ3ZWIiLCJleHAiOjE3Nzk2NjMxNjQsImlhdCI6MTc3OTYxOTk2MywiaXNzIjoidmludGVkLWlhbS1zZXJ2aWNlIiwicHVycG9zZSI6ImFjY2VzcyIsInNjb3BlIjoicHVibGljIiwic2lkIjoiZDllNTgzZjMtMTc3OTYxOTk2MyJ9.crfOWU3OigCx51NnjO0iiOpZkZu_-kWLVHh70QWmlp-7UYAUAA6iykTxNAq4FANwLf0x_9x1OaYuTDhIQPVevjE4OOvxa-LcXHo6ulg4BX8F6udlcFquDs7oSMHYk6RsNBpE_qDb0PTXlocInvx4eCG3fwb27TNaBUes6OvuIs5JmNdtI_vaDPf-9k_xkjmME7jCbxtDVWWgrOknEjtYcZGPROryYnYHUU8CV8nLzm83LPo3HMSBB-1MBeuB4EK4Gka5tUl2O___JCTdW4fQoS65Y66pMUlNx9fk9pzYKdwSXJpn6GK9I3k0Rd0qn27tSvM5A3-rvgmiSPEOod-w0Q; cf_clearance=P5OHB0RNFt826P5_XH6Tg6S2dI1WonxCe5HU6RAWrM0-1779619964-1.2.1.1-_LUgj5xplaJREzeJmHVbyi0Jo4c6UfLrDlPaCUbY26iBMkFj7pDg8LeWKP1xAaHBBZGIMtiLUkIyZMvhmKrG8HYoWjXeqw.74eDU5DBlUka0bg_CJ1JBZpus1HIC7BVH2Bd1MeqiSNaWvd6hgQvYn5DXnU08xUK5oDJLdzrgJfXxH1wx1px1FzrcigE_J2OYU9QbST6QClVaucJRQKNMBoP2IVmt0PtB5K.pEitrPTmSoWqQTPkuaOLvyUSUs4b8vvq4VhlXJnDl3arB_mgzjINXaWgq9RK1S3sKkCX37uqn1ZTKo5lpRyJQhRF2WHM5sv4uUYNdm8Es1YDFt7KCR0oxaaAZYSeU4ihTiSM9ZbW7I2ID_eJNM4.Zp_S70HU2YnEx9RVATb_7XppSGMYPOwbvf1LIGQT08F_JLDeOhW4; viewport_size=977; OptanonConsent=isGpcEnabled=0&datestamp=Sun+May+24+2026+11%3A53%3A11+GMT%2B0100+(British+Summer+Time)&version=202602.1.0&browserGpcFlag=0&isIABGlobal=false&consentId=91761982-52b2-451b-bf75-13395b91c575&isAnonUser=1&hosts=&interactionCount=1&prevHadToken=0&landingPath=NotLandingPage&groups=C0001%3A1%2CC0002%3A1%2CC0003%3A1%2CC0004%3A1%2CC0005%3A1%2CV2STACK42%3A1%2CC0035%3A1%2CC0038%3A1&genVendors=V5%3A1%2CV2%3A1%2CV1%3A1%2C&intType=1&crTime=1778837345403&geolocation=GB%3BENG&AwaitingReconsent=false; _vinted_fr_session=SXk1QWk4YVZvdFJteTRLSmNwNkc0d1hOcFRPbzB2ZzNOVDAxVDl3RGJOTEhqNkE2a2VPQTdGSE1WM0MyZmlVWE5KdHNpaW9TZm5pR1hYVEtqUUpPaGo0aHh3dGVjQUtsaU1pMXpzeG96eUVpWVFsVUNOSlVNY29HVWdIYmowZW4yUFk1WDN1U0dTS3VaWnVoa3NwM00xNE5waHk1ZldKdGkwQ2NSQTJGQVhVTGpBV2dEMmNqd0dGRkZMN2hWMUY1dWNaa20xY3BGcWlxSXV0SDlDcXRiQWpZNnVpZS9peWFZUzlqTHJrUGJ0WlBvRDFjdGl5Y0hWR01Bajl0cm91aS0tSUNNQkRtb212dVREUTZGQ3FLQXdlZz09--ce9ac1d1d609edd93addd759fc780acc4dfb4447; _ga_ZJHK1N3D75=GS2.1.s1779619965$o27$g1$t1779619992$j33$l0$h0; _ga_C1K5578GF1=GS2.1.s1779619965$o26$g1$t1779619992$j33$l0$h0; cto_bundle=6yqSCl82VSUyRm1ndG9qdHBoQ2xpQjJqMERTc2tGc1FuNHBzQ2QxOWVUY3dmSjhMckZWMXd1dDJZMUVsdjZ3QW1lQTlDWm0wUmN4TFQ3U2QlMkIyN2txb0Jzb2h1Rmg3MVN2OTVtSVdJZ1FEQUpiQWdnNnpTWiUyQlZyME1FY0FvbVNqR2FydzR4aU9JRTJMTTJYdzQ3bmhFN0J6bU1Fc3clM0QlM0Q; datadome=OR~qj0_d9YRl0YT0pipF7xLg1r5ZxlDFEsrerU5PpgZZIV0u094sj5REan~RTFJmZM79m4eLGVElw2ZwcR9QWAd0XzqiKdGuhH1dXEexAo5jstr8HpMtn2url6PZ1mR7"
 
 # ── ANTHROPIC API KEY (image analysis) ───────────────────────────────────────
-ANTHROPIC_API_KEY = "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"
+ANTHROPIC_API_KEY = "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"
 
 # ── POLLING INTERVAL ──────────────────────────────────────────────────────────
 CHECK_INTERVAL_MINUTES_MIN = 25
@@ -24,6 +24,9 @@ SEARCH_KEYWORDS = [
     "vintage book",
     "vintage hardback",
     "antique book",
+    "occult book",
+    "esoteric book",
+    "astronomy book",
 
     # Physical descriptions — seller describing what they see
     "leather bound book",
@@ -35,6 +38,7 @@ SEARCH_KEYWORDS = [
     "house clearance books",
     "job lot books",
     "old book bundle",
+    "antique book bundle",
 
     # Publisher-based searches — "john murray" proven to find genuine Victorian books
     # Other publisher names removed: cassell sons → returns pottery, sampson low →
@@ -60,57 +64,135 @@ GOOD_CONDITIONS = [
 ]
 
 # ── PUBLISHER TIERS ───────────────────────────────────────────────────────────
-# Tier 1 publishers score +3 — the most prestigious Victorian imprints.
-# Their name alone on a spine adds significant collector value.
-# All other publishers in PUBLISHER_SIGNALS score +2 as before.
+# Tier 1 scores +3  — chromolithograph covers, gift books, illustration, top collector demand
+# Tier 2 scores +2  — strong performers, reliable quality and collector interest
+# Tier 3 scores +2  — worth knowing, less consistent but can produce gems
+# Tier 4 scores +1  — specialist/situational, only valuable in the right context
+#
+# Key buying patterns:
+#   Routledge + illustrated + chromolithograph = almost always buy
+#   Warne + natural history + colour plates    = almost always buy
+#   Blackie + Henty                            = always research before buying
+#   Chapman & Hall + natural history           = strong AbeBooks candidate
+#   Eveleigh Nash + occult                     = buy
+#   Any publisher + named illustrator + first edition = research immediately
+#   Any publisher + theology/divinity          = usually pass
+#   Any publisher + plain cloth no decoration  = pass unless exceptional author
+#   Any publisher + ex-library stamps          = always pass
+
 PUBLISHER_TIER_1 = [
-    "john murray",       # Darwin, Byron, Livingstone, Austen
-    "macmillan",         # Tennyson, Hardy, Carroll (via Macmillan)
-    "chapman & hall",    # Dickens's primary publisher
-    "chapman hall",
-    "smith elder",       # Brontës, Thackeray, Browning
-    "blackwood",         # George Eliot, Conrad, Stevenson
-    "kegan paul",        # Strong on science, travel, philosophy
+    # Chromolithograph covers, gift books, natural history, poetry, children's
+    "george routledge", "routledge", "routledge sons",
+    "george routledge & sons",
+    # Natural history series, illustrated children's, gift books, beautiful bindings
+    "frederick warne",    # full name — "warne" alone too ambiguous
+    "warne & co",
+    # Henty's publisher, boys adventure, illustrated gift books
+    "blackie & son", "blackie and son", "blackie sons",
+    "blackie",            # short form — safe given context
+    # Prestige literary publisher, natural history, science
+    "macmillan", "macmillan & co",
+    # Dickens' publisher, natural history, Hudson, serious literary
+    "chapman & hall", "chapman hall",
+    # Buckland's publisher, Victorian fiction, prestige
+    "richard bentley",    # full name only — "bentley" alone matches the car brand
+    "richard bentley & son",
+    # Specialist occult publishers — any title = serious collector value
+    "eveleigh nash", "nash & grayson",  # O'Donnell's publisher — proven strong seller
+    "george redway",      # specialist occult 1880s-90s, Theosophical and esoteric
+    "rider & son",        # occult, mysticism, Eastern religion — highly collected
+    "kegan paul", "kegan paul & co",  # serious occult and psychical research, prestige
 ]
 
-# ── GREEN FLAG PUBLISHERS ─────────────────────────────────────────────────────
-# Each match scores +2 (or +3 if in PUBLISHER_TIER_1 above).
-PUBLISHER_SIGNALS = [
+PUBLISHER_TIER_2 = [
+    # Illustrated magazines spun into books, chromolithograph covers, natural history
+    "cassell", "cassell & co", "cassell sons", "cassell & company",
+    # Boys adventure, religious gift books, good illustrated editions
+    "hodder & stoughton", "hodder and stoughton", "hodder stoughton",
+    # Natural history, science, travel, prestige academic
+    "longmans green", "longmans, green", "longmans",
+    # Travel, exploration, Darwin — serious collector publisher
     "john murray",
-    "george routledge",
-    "routledge",
-    "macmillan",
-    "longmans green",
-    "longmans",
-    "cassell",
-    "cassell & co",
-    "cassell sons",
-    "chapman & hall",
-    "chapman hall",
-    "frederick warne",     # full name only — "warne" alone too ambiguous
-    "sampson low",
-    "isbister",
-    "isbister & co",
-    "richard bentley",     # full name only — "bentley" alone matches the car brand
-    "smith elder",
-    "blackwood",
-    "kegan paul",
-    "trübner",
-    "w h allen",
+    # Travel, exploration, illustrated, Kingston
+    "sampson low", "sampson low & co",
+    # Natural history, astronomy, Agnes Giberne
+    "seeley", "seeley & co",
+    # Astronomy, Robert Ball, illustrated science
+    "isbister", "isbister & co",
+    # Illustrated gift books, Sunday school prizes, chromolithograph covers
+    "society for promoting christian knowledge", "s.p.c.k", "spck",
+    # Frank Dadd illustrated, gift books — same quality as SPCK
+    "religious tract society",
+    # Specialist occult — strong collector niche
+    "theosophical publishing society", "theosophical publishing",
+    "john watkins",       # specialist occult, Charing Cross Road — any imprint sought after
+    "william rider & son", "william rider",  # Tarot, Kabbalah — Rider-Waite connection
+    "philip wellby",      # Edwardian occult publisher
+    "society for psychical research",  # SPR publications — serious collector niche
+]
+
+PUBLISHER_TIER_3 = [
+    # Scottish publisher, boys adventure, natural history, David Ker
+    "w & r chambers", "w. & r. chambers", "chambers",
+    # Illustrated children's, gift books, natural history, Giacomelli connection
+    "t nelson", "thomas nelson", "nelson & sons", "t. nelson",
+    # Oxford University Press imprint, prestige bindings
+    "henry frowde", "frowde",
+    # (Eveleigh Nash and Kegan Paul promoted to Tier 1 for occult value)
+    # Natural history, illustrated reference
+    "bell & sons", "george bell", "george bell & sons",
+    # Victorian fiction, some illustrated editions
+    "chatto & windus", "chatto and windus",
+    # Chromolithograph gift books, very decorative
+    "marcus ward", "marcus ward & co",
+    # Chromolithograph children's books, highly decorative
+    "ernest nister", "nister",
+    # Children's illustrated, toy books
+    "dean & son", "dean and son",
+    # Boys adventure, illustrated children's
+    "griffith farran", "griffith & farran",
+    # George Eliot, Conrad, Stevenson
+    "blackwood", "william blackwood",
+    # Brontës, Thackeray, Browning
+    "smith elder", "smith, elder",
+]
+
+PUBLISHER_TIER_4 = [
+    # Oxford/Cambridge academic — only valuable with exceptional binding
+    "rivingtons",
+    # Literary, Thackeray — needs right title
+    # smith elder already in tier 3
+    # Victorian sensation fiction
+    "tinsley brothers", "tinsley",
+    # Illustrated family magazines spun into volumes, chromolithograph plates
+    "virtue & co", "virtue and co",
+    # Chromolithograph illustrated annuals
+    "the art journal",
+    # Tegg imprints — decorated reprints, gilt bindings
+    "william tegg",
+    "thomas tegg",
+    "tegg and son",
+    # Other known Victorian imprints
+    "trübner", "w h allen",
     "edward arnold",
     "methuen",
     "heinemann",
-    "o'donoghue",
     "bradbury agnew",
     "henry holt",
     "harper brothers",
-    "routledge sons",
-    "eveleigh nash",       # London occult/supernatural publisher 1900s–1910s — Elliott O'Donnell etc.
-    "nash & grayson",      # successor imprint
-    "william tegg",        # London 1850s–1870s — decorated reprints, gilt bindings (W. Scott Demonology → £117)
-    "thomas tegg",         # Earlier Tegg imprint 1820s–1840s — same decorated binding style (Imposture Deception 1837 → £34+)
-    "tegg and son",        # variant imprint name
+    "bradshaw",           # Bradshaw's Railway Guides — Victorian classic
 ]
+
+# ── PUBLISHER_SIGNALS — flat list used by scorer for +1/+2/+3 lookup ──────────
+# Scorer checks TIER_1 first (+3), then TIER_2 (+2), then TIER_3 (+2),
+# then TIER_4 (+1). PUBLISHER_SIGNALS is the union of all four for the
+# "confirmed publisher" gate in main.py.
+PUBLISHER_SIGNALS = (
+    PUBLISHER_TIER_1 +
+    PUBLISHER_TIER_2 +
+    PUBLISHER_TIER_3 +
+    PUBLISHER_TIER_4
+)
 
 # ── AUTHOR WHITELIST ──────────────────────────────────────────────────────────
 # Victorian and Edwardian authors whose work commands strong resale prices.
@@ -167,11 +249,20 @@ AUTHOR_WHITELIST = [
     "camille flammarion",    # Popular Astronomy, widely read in English translation
     "john browning",         # How to Use the Spectroscope
     "edward singleton holden",
+    "john herschel", "sir john herschel",  # Outlines of Astronomy
+    "amedee guillemin", "amédée guillemin", # The Heavens, chromolithograph editions
+    "eliza bowen",            # Astronomy by Observation
     # Additional natural history
     "henry seebohm",         # History of British Birds
     "william henry hudson", "w h hudson",  # Birds in a Village, British Birds
     "edward newman",         # History of British Ferns
     "margaret gatty",        # British Sea-Weeds
+    # Additional natural history — proven category sellers
+    "j g wood", "j.g. wood", "john george wood",  # hugely popular illustrated NH
+    "arabella buckley",       # natural history for children
+    "richard jefferies",      # Victorian country nature writing
+    "charles waterton",       # eccentric naturalist, wanderings
+    "edward step",            # Wayside and Woodland series, Warne
     # Exploration & Travel
     "david livingstone", "livingstone",
     "henry morton stanley",
@@ -179,6 +270,8 @@ AUTHOR_WHITELIST = [
     "samuel baker",
     "john hanning speke",
     "frederick selous",
+    "constance gordon-cumming", "gordon cumming",  # travel writing, illustrated
+    "isabella bird",          # female travel writer, very collectable
     # Critics / Essayists
     "john ruskin", "ruskin",
     "thomas carlyle", "carlyle",
@@ -190,9 +283,27 @@ AUTHOR_WHITELIST = [
     "aleister crowley",
     # Occult / Ghost hunters — proven strong resale (Some Haunted Houses 1908 → £74 eBay)
     "elliott o'donnell", "elliott odonnell", "o'donnell",
+    "montague summers",       # vampires, werewolves, witchcraft — very collectable
+    "william hope hodgson",   # supernatural horror
+    "sabine baring-gould", "baring-gould", "baring gould",  # werewolves, myths
+    "charles mackay",         # Extraordinary Popular Delusions
+    "david brewster", "sir david brewster",  # Letters on Natural Magic
+    "catherine crowe",        # Night Side of Nature — very sought after
+    "joseph glanvill",        # witchcraft and apparitions
     # Major Victorian poets / novelists also commanding strong prices
     "walter scott", "sir walter scott",   # Demonology & Witchcraft 1857 → £117 eBay
+    # Boys adventure — prolific Victorian genre, strong collector demand
+    "g a henty", "g.a. henty", "george alfred henty", "henty",  # most collected, Blackie
+    "g manville fenn", "g.m. fenn", "george manville fenn",     # nautical and adventure
+    "r m ballantyne", "r.m. ballantyne", "robert michael ballantyne",  # Coral Island
+    "w h g kingston", "w.h.g. kingston", "william henry giles kingston",
+    "silas k hocking", "silas hocking",   # Tregeagle's Head etc.
+    "edward s ellis", "edward sylvester ellis",  # frontier adventure
+    "gordon stables", "william gordon stables",  # naval adventure
+    "s r crockett", "s.r. crockett", "samuel rutherford crockett",
+    "david ker",              # O'er Tartar Deserts
 ]
+
 
 # ── PHYSICAL DESCRIPTOR SIGNALS ───────────────────────────────────────────────
 # Binding and physical condition terms used by knowledgeable sellers.

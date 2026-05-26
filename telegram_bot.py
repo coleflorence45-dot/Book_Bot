@@ -91,7 +91,7 @@ def send_alert(item: dict):
 
     lines = [
         f"📚 <b>{_e(item['title'])}</b>",
-        f"💰 £{float(item['price']):.2f}  |  Score: {item['score']}",
+        f"💰 £{float(item['price']):.2f}  |  Score: {item['score']}" + (" ⚠️ <i>seller may know value</i>" if float(item.get('price', 0)) >= 15 else ""),
         f"⭐ Condition: {_e(item['condition'])}",
         f"👤 Seller: {_e(item['seller'])} ({_e(item['seller_rep'])} feedback)",
     ]

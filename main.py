@@ -440,9 +440,37 @@ def _start_telegram_actions():
         print(f"  [actions] Could not start background handler: {e}")
 
 
+ACTIVITY_CHECK_INTERVAL = 5 * 60  # seconds — check watched listings every 5 minutes
+
+
+def _start_activity_monitor():
+    """
+    Run watched-listing favourite checks every 5 minutes in a background thread.
+    Completely independent of the main scan cycle — catches hot listings that
+    would be sold before the next 25-40 min scan fires.
+    Zero API credits — Vinted calls only.
+    """
+    def _loop():
+        import time as _time
+        from config import TELEGRAM_TOKEN, TELEGRAM_CHAT_ID
+        from vinted import session as vinted_session
+        _time.sleep(ACTIVITY_CHECK_INTERVAL)  # let the first scan run first
+        while True:
+            try:
+                check_watched_listings(vinted_session, TELEGRAM_TOKEN, TELEGRAM_CHAT_ID)
+            except Exception as e:
+                print(f"  [activity] Background check error: {e}")
+            _time.sleep(ACTIVITY_CHECK_INTERVAL)
+
+    t = threading.Thread(target=_loop, daemon=True, name="ActivityMonitor")
+    t.start()
+    print("📊 Activity monitor started (5-min background checks)")
+
+
 # ── Entry point ───────────────────────────────────────────────────────────────
 get_session_cookie()
 _start_telegram_actions()
+_start_activity_monitor()
 
 try:
     check_vinted()
