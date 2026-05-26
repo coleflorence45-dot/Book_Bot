@@ -1,0 +1,110 @@
+{
+  "skips": [
+    {
+      "title": "Photographs Of The Old Closes And Street Of Glasgow 1868/1877 by Thomas Annan",
+      "price": 20.0,
+      "score": 6,
+      "reason": "Dover Publications modern reprint (1977), paperback edition. Not an original Victorian book.",
+      "date": "2026-05-23"
+    },
+    {
+      "title": "Bird of Paradise .. Vintage 1869 book print",
+      "price": 6.0,
+      "score": 10,
+      "reason": "Single print/page removed from book, mounted in black mat — not a complete volume.",
+      "date": "2026-05-23"
+    },
+    {
+      "title": "The Wild Boar .. Vintage 1896 book print",
+      "price": 6.0,
+      "score": 7,
+      "reason": "Single print/page torn from a book, mounted in card — not a complete volume.",
+      "date": "2026-05-23"
+    },
+    {
+      "title": "Lovely little vintage 1896 book print.. The Sparrows reflection",
+      "price": 4.0,
+      "score": 8,
+      "reason": "Single print/page mounted in card — not a complete book volume. Disqualified as wrong item type.",
+      "date": "2026-05-23"
+    },
+    {
+      "title": "Beautiful vintage 1893 book print.. The Parrot and the shoe",
+      "price": 6.0,
+      "score": 7,
+      "reason": "Single print/page mounted in modern black mat — not a complete book volume.",
+      "date": "2026-05-23"
+    },
+    {
+      "title": "The Leaf Insect .. Vintage 1894 book print",
+      "price": 4.0,
+      "score": 11,
+      "reason": "Single print/page torn from a book, mounted on card — not a complete volume.",
+      "date": "2026-05-23"
+    },
+    {
+      "title": "Water Beetles.. Little vintage 1896 book print",
+      "price": 4.0,
+      "score": 8,
+      "reason": "Single print/page mounted in card — not a complete book volume. Hard skip per wrong item rules.",
+      "date": "2026-05-23"
+    },
+    {
+      "title": "Osprey Campaign Series 6: Balaclava, 1854",
+      "price": 4.0,
+      "score": 7,
+      "reason": "Osprey Military modern paperback with dust jacket design; photo 2 shows 'WITHDRAWN' library stamp and barcode — multiple hard skip criteria.",
+      "date": "2026-05-23"
+    },
+    {
+      "title": "Paris Under Siege 1870–71 | Folio Society",
+      "price": 7.0,
+      "score": 7,
+      "reason": "Folio Society reprint — distinctive FS gilt logo on spine, slipcase present. Modern edition, not Victorian original.",
+      "date": "2026-05-24"
+    },
+    {
+      "title": "Antique The Lay Of The Last Minstrel 1845",
+      "price": 7.95,
+      "score": 6,
+      "reason": "University College School prize book — effectively ex-institutional. Also Walter Scott poetry, slow category. Worn leather, inscriptions throughout.",
+      "date": "2026-05-25"
+    },
+    {
+      "title": "Antique book  Punch magazine 1869",
+      "price": 6.0,
+      "score": 6,
+      "reason": "Spine top badly crumbling/deteriorating (photos 2&3); leather boards heavily worn with significant damage — condition too poor to resell profitably.",
+      "date": "2026-05-25"
+    },
+    {
+      "title": "Arithmetic Designed for the Use of Schools: To Which is Added A Chapter on Decimal Coinage 1867",
+      "price": 12.0,
+      "score": 6,
+      "reason": "School arithmetic primer by Colenso, Longmans 1867. Wrong item — school textbook/primer category. Spine also heavily damaged and crumbling.",
+      "date": "2026-05-25"
+    },
+    {
+      "title": "Original Lloyds Book of Birds vol 1 plate 1896",
+      "price": 5.0,
+      "score": 10,
+      "reason": "Single loose plate (Plate XXI Reed/Sedge Warbler) plus list of plates page — not a complete volume, torn from book.",
+      "date": "2026-05-25"
+    },
+    {
+      "title": "vintage \"Collecting English Coins 1837-1971\" mini book published by Corgi",
+      "price": 20.0,
+      "score": 6,
+      "reason": "Corgi mini-book published 1971, post-1910, has ISBN-era barcode, thin pamphlet format with dust jacket cover.",
+      "date": "2026-05-25"
+    },
+    {
+      "title": "Antique book 1851 The Pilgrim’s Progress John Bunyan Rare Small Book",
+      "price": 15.0,
+      "score": 7,
+      "reason": "Pilgrim's Progress is theological/religious allegory — hard skip category. Spine also heavily deteriorated.",
+      "date": "2026-05-25"
+    }
+  ],
+  "total_skips": 15
+}

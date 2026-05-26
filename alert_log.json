@@ -43,6 +43,91 @@
         "📅 Sweet spot year: 1862",
         "🔍 Little or no description"
       ]
+    },
+    {
+      "timestamp": "2026-05-23 12:54",
+      "date": "2026-05-23",
+      "time": "12:54",
+      "day": "Saturday",
+      "hour": 12,
+      "action": "BUY",
+      "title": "1881 leather bound book",
+      "price": 5.0,
+      "score": 9,
+      "url": "https://www.vinted.co.uk/items/8986086352",
+      "image_reason": "Title page: Rivingtons 1878 (MDCCCLXXVIII), J.B. Mozley. Full tan leather binding, raised bands, ornate cross decoration, marbled endpapers. Provenance inscription 'Trinity 1881'.",
+      "signals": [
+        "👍 Condition: Good (+1)",
+        "📖 Leather Bound",
+        "📅 Sweet spot year: 1881",
+        "🔍 Vague short title",
+        "🔍 Little or no description",
+        "🔍 Publisher not identified by seller",
+        "💎 Cheap + vague = likely undervalued",
+        "💸 Low price — seller likely unaware of value"
+      ]
+    },
+    {
+      "timestamp": "2026-05-24 17:41",
+      "date": "2026-05-24",
+      "time": "17:41",
+      "day": "Sunday",
+      "hour": 17,
+      "action": "BUY",
+      "title": "Country Pastimes for Boys Antique Hardback Book 1895",
+      "price": 15.0,
+      "score": 6,
+      "url": "https://www.vinted.co.uk/items/8996393884",
+      "image_reason": "Longmans publisher, 'Outdoor World Library' series, striking Art Nouveau pictorial boards in navy/tan, natural history subject matter — unmistakably Victorian.",
+      "signals": [
+        "👍 Condition: Good (+1)",
+        "📖 Antique",
+        "📅 Sweet spot year: 1895",
+        "🔍 Little or no description",
+        "🔍 Publisher not identified by seller"
+      ]
+    },
+    {
+      "timestamp": "2026-05-24 22:02",
+      "date": "2026-05-24",
+      "time": "22:02",
+      "day": "Sunday",
+      "hour": 22,
+      "action": "BUY",
+      "title": "Victorian Book 1858",
+      "price": 8.0,
+      "score": 6,
+      "url": "https://www.vinted.co.uk/items/8998713713",
+      "image_reason": "Title page: Thackeray, Smith Elder & Co., 1858. Quality Victorian publisher, genuine early edition. Spine damaged but text block intact.",
+      "signals": [
+        "⚠️ Condition: Satisfactory (-1)",
+        "📖 Victorian",
+        "📅 Sweet spot year: 1858",
+        "🔍 Vague short title",
+        "🔍 Little or no description",
+        "🔍 Publisher not identified by seller",
+        "💎 Cheap + vague = likely undervalued"
+      ]
+    },
+    {
+      "timestamp": "2026-05-25 19:25",
+      "date": "2026-05-25",
+      "time": "19:25",
+      "day": "Monday",
+      "hour": 19,
+      "action": "BUY",
+      "title": "Through Normandy, Katharine S Macquoid, Antique Hardback Book 1895",
+      "price": 15.0,
+      "score": 6,
+      "url": "https://www.vinted.co.uk/items/9006329165",
+      "image_reason": "Title page: 'Through Normandy' Katharine S. Macquoid, Chatto & Windus 1895, 92 illustrations. Green cloth with gilt Celtic border and heraldic device. Travel/exploration genre.",
+      "signals": [
+        "👍 Condition: Good (+1)",
+        "📖 Antique",
+        "📅 Sweet spot year: 1895",
+        "🔍 Little or no description",
+        "🔍 Publisher not identified by seller"
+      ]
     }
   ]
 }

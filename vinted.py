@@ -107,10 +107,27 @@ def extract_year_from_title(title: str):
     """
     Pull a publication year from a listing title.
     Detects all years 1700–2030 including decade references (1880s, 1960s).
-    Returns the earliest found year, or None.
+
+    Hyphenated date ranges (e.g. "1837-1971", "Coins 1800-1900"):
+      If the later year is > 1910, use the later year — the range describes
+      coverage/content, not the publication date. "1837-1971" means published
+      in/after 1971, not 1837.
+      If both years are within 1700-1910, use the earlier (publication start).
     """
-    exact  = [int(y) for y in re.findall(r'(?:c\.?\s*)?(?<!\d)((?:1[7-9]|20)\d{2})(?!\d)', title)]
+    exact  = [int(y) for y in re.findall(r'(?:c\.?\s*)?(?<!\d)((?:1[7-9]|20)\d{2})(?!\d)(?!-\d*[A-Za-z])', title)]
     decade = [int(y) for y in re.findall(r'\b((?:1[7-9]|20)\d0)s\b', title, re.IGNORECASE)]
+
+    # Detect hyphenated year ranges like "1837-1971" or "1800-1900"
+    ranges = re.findall(r'\b((?:1[7-9]|20)\d{2})-((?:1[7-9]|20)\d{2})\b', title)
+    for y1_str, y2_str in ranges:
+        y1, y2 = int(y1_str), int(y2_str)
+        if y2 > 1910:
+            # Later year is post-Victorian — range describes content span,
+            # publication is modern. Use the later year.
+            exact = [y for y in exact if y != y1]
+            if y2 not in exact:
+                exact.append(y2)
+
     candidates = exact + decade
     return min(candidates) if candidates else None
 
@@ -178,6 +195,18 @@ def format_item(item: dict) -> dict:
     year_hint  = extract_year_from_title(title) or extract_year_from_title(description)
     favourites = int(item.get("favourite_count", 0) or item.get("favorites_count", 0) or 0)
 
+    # Extract ISBN field if Vinted returns one — field names vary by API version
+    isbn = (
+        item.get("isbn") or
+        item.get("isbn_number") or
+        item.get("isbn13") or
+        item.get("isbn10") or
+        item.get("book_isbn") or
+        ""
+    )
+    if isbn:
+        print(f"  [vinted] ISBN field found: {isbn}")
+
     # Calculate listing age in minutes
     created_at  = item.get("created_at_ts") or item.get("created_at") or ""
     listing_age = None
@@ -196,6 +225,7 @@ def format_item(item: dict) -> dict:
         "id":            item["id"],
         "title":         title,
         "description":   description,
+        "isbn":          isbn,
         "price":         price,
         "url":           f"https://www.vinted.co.uk/items/{item['id']}",
         "photo":         photo_url,

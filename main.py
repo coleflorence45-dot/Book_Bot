@@ -4,6 +4,7 @@
 import time
 import random
 import json
+import re
 import os
 from datetime import datetime
 
@@ -17,16 +18,40 @@ from vinted            import fetch_listings, fetch_seller_listings, format_item
 from scorer            import score_item, hard_block, passes_condition_filter
 from image_analyser    import analyse_image
 from telegram_bot      import send_alert, send_image
-from tracker           import load_seen, save_seen, is_new
-from seller_watchlist  import add_seller, get_watched_sellers
+from tracker           import load_seen, save_seen, is_new, mark_seen
+from seller_watchlist  import get_watched_sellers, record_404, record_success
+from skip_logger       import log_skip
 from keyword_learner   import learn_from_alert, get_suggestions
 from abebooks_checker  import check_market_value
 from ebay_checker      import check_sold_value
 from image_cache       import get_cached_verdict, cache_verdict
 from pricing           import calculate_sell_price
 from book_identifier   import should_identify, identify_book, enrich_item
+from activity_monitor  import add_to_watchlist, check_watched_listings
 
-ALERT_LOG_FILE = "alert_log.json"
+ALERT_LOG_FILE          = "alert_log.json"
+PENDING_SELLERS_FILE    = "pending_sellers.json"
+
+
+def _store_pending_seller(item: dict):
+    """
+    Save seller info keyed by item_id so telegram_actions.py can add the seller
+    to the watchlist only if the user actually taps ✅ Bought.
+    """
+    try:
+        data = {}
+        if os.path.exists(PENDING_SELLERS_FILE):
+            with open(PENDING_SELLERS_FILE, "r", encoding="utf-8") as f:
+                data = json.load(f)
+        data[str(item.get("id", ""))] = {
+            "seller_id":  str(item.get("seller_id", "")),
+            "seller":     item.get("seller", "unknown"),
+            "title":      item.get("title", ""),
+        }
+        with open(PENDING_SELLERS_FILE, "w", encoding="utf-8") as f:
+            json.dump(data, f, indent=2, ensure_ascii=False)
+    except Exception as e:
+        print(f"  [seller] Could not store pending seller: {e}")
 
 
 def log_alert(item: dict, verdict: dict):
@@ -109,6 +134,11 @@ def process_items(items: list, seen_ids: set, new_seen: set, stats: dict):
             stats["already_seen"] += 1
             continue
         new_seen.add(str(item["id"]))
+        mark_seen(item["id"])  # Persist immediately — prevents re-alert if bot restarts mid-scan
+
+        # Activity monitor — add to watchlist before hard_block so we catch
+        # Victorian-year listings that might otherwise be filtered out
+        add_to_watchlist(item)
 
         if item["price"] < MIN_PRICE:
             stats["hard_blocked"] += 1
@@ -146,6 +176,7 @@ def process_items(items: list, seen_ids: set, new_seen: set, stats: dict):
             "gilt", "leather", "illustrated", "cloth", "antique",
             "decorative", "victorian", "hardback", "hardcover",
             "embossed", "engraved", "plates", "coloured",
+            "original edition", "first edition", "1st edition",
         ]
         title_lower  = (item.get("title") or "").lower()
         has_age_hint = any(s in title_lower for s in AGE_HINT_SIGNALS)
@@ -157,12 +188,17 @@ def process_items(items: list, seen_ids: set, new_seen: set, stats: dict):
             any(g.lower() in combined_text for g in PRIORITY_GENRE_OCCULT)
         )
 
+        STRONG_BOOK_TITLE_WORDS = {
+            "book", "books", "hardback", "hardcover", "paperback",
+            "volume", "edition", "illustrated", "history", "guide",
+            "atlas", "manual", "treatise", "memoir", "voyage", "travels",
+        }
+        title_words     = set(re.findall(r'\b\w+\b', title_lower))
+        looks_like_book = bool(title_words & STRONG_BOOK_TITLE_WORDS)
+
         is_borderline    = 4 <= item["score"] <= 5 and is_vague and has_age_hint
-        # Require at least one genuine age/Victorian hint in the title before
-        # burning an identifier API call — prevents "Ted bundy book", "Baby books",
-        # "GCSE revision guide" etc. triggering on unawareness signals alone.
-        is_high_no_year  = item["score"] >= 7 and not has_victorian_year and has_age_hint
-        is_genre_no_year = is_priority_genre and not has_victorian_year and item["score"] >= MIN_SCORE
+        is_high_no_year  = item["score"] >= 7 and not has_victorian_year and has_age_hint and looks_like_book
+        is_genre_no_year = is_priority_genre and not has_victorian_year and item["score"] >= MIN_SCORE and has_age_hint and looks_like_book
 
         if is_borderline or is_high_no_year or is_genre_no_year:
             if is_high_no_year:
@@ -274,6 +310,7 @@ def process_items(items: list, seen_ids: set, new_seen: set, stats: dict):
         stats["output_tokens"] += verdict.get("output_tokens", 0)
 
         if verdict["action"] == "SKIP":
+            log_skip(item, verdict)
             print(f"  🔴 Image SKIP: {item['title']} — {verdict['reason']}")
             stats["image_skip"] += 1
             continue
@@ -283,8 +320,9 @@ def process_items(items: list, seen_ids: set, new_seen: set, stats: dict):
 
         if verdict["action"] == "BUY":
             stats["buy"] += 1
-            add_seller(item)
             learn_from_alert(item)
+            # Store seller info for watchlist — only added when user taps ✅ Bought
+            _store_pending_seller(item)
             # Market value cross-checks — AbeBooks (asking) + eBay (sold)
             abebooks = check_market_value(item)
             ebay     = check_sold_value(item)
@@ -328,6 +366,11 @@ def check_vinted():
         "input_tokens": 0, "output_tokens": 0,
     }
 
+    # ── Activity monitor — check favourites growth on watched listings ────────
+    from config import TELEGRAM_TOKEN, TELEGRAM_CHAT_ID
+    from vinted import session as vinted_session
+    check_watched_listings(vinted_session, TELEGRAM_TOKEN, TELEGRAM_CHAT_ID)
+
     # ── Keyword searches ──────────────────────────────────────────────────────
     for keyword in SEARCH_KEYWORDS:
         items = fetch_listings(keyword, MAX_PRICE)
@@ -340,9 +383,17 @@ def check_vinted():
         print(f"\n  👁️  Checking {len(watched)} watched seller(s)...")
         for user_id, username in watched:
             items = fetch_seller_listings(user_id, 30.00)
-            print(f"  [@{username}] {len(items)} listing(s)")
-            time.sleep(random.uniform(5.0, 10.0))
-            process_items(items, seen_ids, new_seen, stats)
+            if items is None or (isinstance(items, list) and len(items) == 0):
+                # fetch_seller_listings returns [] on 404 — check HTTP status
+                # by trying once more and checking for removal
+                removed = record_404(user_id)
+                if not removed:
+                    print(f"  [@{username}] 0 listing(s)")
+            else:
+                record_success(user_id)
+                print(f"  [@{username}] {len(items)} listing(s)")
+                time.sleep(random.uniform(5.0, 10.0))
+                process_items(items, seen_ids, new_seen, stats)
 
     save_seen(new_seen)
 
@@ -375,8 +426,23 @@ def check_vinted():
     send_weekly_digest()
 
 
+import threading
+
+
+def _start_telegram_actions():
+    """Run the Telegram callback handler in a background daemon thread."""
+    try:
+        from telegram_actions import poll
+        t = threading.Thread(target=poll, daemon=True, name="TelegramActions")
+        t.start()
+        print("🎛️  Telegram action handler started (background thread)")
+    except Exception as e:
+        print(f"  [actions] Could not start background handler: {e}")
+
+
 # ── Entry point ───────────────────────────────────────────────────────────────
 get_session_cookie()
+_start_telegram_actions()
 
 try:
     check_vinted()

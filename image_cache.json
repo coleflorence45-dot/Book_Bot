@@ -23,5 +23,105 @@
     "action": "SKIP",
     "reason": "Tiny devotional pamphlet/miniature book, spine under 1cm, heavily damaged spine with boards detaching, low resale category.",
     "analysed": "2026-05-22 22:55"
+  },
+  "8985407098": {
+    "action": "SKIP",
+    "reason": "Ex-library: British Sailors Society Ocean Libraries Service stamps, labels, and checkout card pasted inside — hard skip.",
+    "analysed": "2026-05-23 11:48"
+  },
+  "8986086352": {
+    "action": "BUY",
+    "reason": "Title page: Rivingtons 1878 (MDCCCLXXVIII), J.B. Mozley. Full tan leather binding, raised bands, ornate cross decoration, marbled endpapers. Provenance inscription 'Trinity 1881'.",
+    "analysed": "2026-05-23 12:54"
+  },
+  "8987851681": {
+    "action": "SKIP",
+    "reason": "Dover Publications modern reprint (1977), paperback edition. Not an original Victorian book.",
+    "analysed": "2026-05-23 16:30"
+  },
+  "8988515156": {
+    "action": "SKIP",
+    "reason": "Single print/page removed from book, mounted in black mat — not a complete volume.",
+    "analysed": "2026-05-23 17:41"
+  },
+  "8988492780": {
+    "action": "SKIP",
+    "reason": "Single print/page torn from a book, mounted in card — not a complete volume.",
+    "analysed": "2026-05-23 17:41"
+  },
+  "8988461543": {
+    "action": "SKIP",
+    "reason": "Single print/page mounted in card — not a complete book volume. Disqualified as wrong item type.",
+    "analysed": "2026-05-23 17:41"
+  },
+  "8988476345": {
+    "action": "SKIP",
+    "reason": "Single print/page mounted in modern black mat — not a complete book volume.",
+    "analysed": "2026-05-23 17:41"
+  },
+  "8988445649": {
+    "action": "SKIP",
+    "reason": "Single print/page torn from a book, mounted on card — not a complete volume.",
+    "analysed": "2026-05-23 17:41"
+  },
+  "8988431527": {
+    "action": "SKIP",
+    "reason": "Single print/page mounted in card — not a complete book volume. Hard skip per wrong item rules.",
+    "analysed": "2026-05-23 17:41"
+  },
+  "8989147167": {
+    "action": "SKIP",
+    "reason": "Osprey Military modern paperback with dust jacket design; photo 2 shows 'WITHDRAWN' library stamp and barcode — multiple hard skip criteria.",
+    "analysed": "2026-05-23 19:02"
+  },
+  "8991544119": {
+    "action": "SKIP",
+    "reason": "Folio Society reprint — distinctive FS gilt logo on spine, slipcase present. Modern edition, not Victorian original.",
+    "analysed": "2026-05-24 11:56"
+  },
+  "8996393884": {
+    "action": "BUY",
+    "reason": "Longmans publisher, 'Outdoor World Library' series, striking Art Nouveau pictorial boards in navy/tan, natural history subject matter — unmistakably Victorian.",
+    "analysed": "2026-05-24 17:41"
+  },
+  "8998713713": {
+    "action": "BUY",
+    "reason": "Title page: Thackeray, Smith Elder & Co., 1858. Quality Victorian publisher, genuine early edition. Spine damaged but text block intact.",
+    "analysed": "2026-05-24 22:02"
+  },
+  "9001436229": {
+    "action": "SKIP",
+    "reason": "University College School prize book — effectively ex-institutional. Also Walter Scott poetry, slow category. Worn leather, inscriptions throughout.",
+    "analysed": "2026-05-25 11:33"
+  },
+  "9002470835": {
+    "action": "SKIP",
+    "reason": "Spine top badly crumbling/deteriorating (photos 2&3); leather boards heavily worn with significant damage — condition too poor to resell profitably.",
+    "analysed": "2026-05-25 13:35"
+  },
+  "9004180381": {
+    "action": "SKIP",
+    "reason": "School arithmetic primer by Colenso, Longmans 1867. Wrong item — school textbook/primer category. Spine also heavily damaged and crumbling.",
+    "analysed": "2026-05-25 16:39"
+  },
+  "9005255507": {
+    "action": "SKIP",
+    "reason": "Single loose plate (Plate XXI Reed/Sedge Warbler) plus list of plates page — not a complete volume, torn from book.",
+    "analysed": "2026-05-25 17:57"
+  },
+  "9006297218": {
+    "action": "SKIP",
+    "reason": "Corgi mini-book published 1971, post-1910, has ISBN-era barcode, thin pamphlet format with dust jacket cover.",
+    "analysed": "2026-05-25 19:24"
+  },
+  "9006329165": {
+    "action": "BUY",
+    "reason": "Title page: 'Through Normandy' Katharine S. Macquoid, Chatto & Windus 1895, 92 illustrations. Green cloth with gilt Celtic border and heraldic device. Travel/exploration genre.",
+    "analysed": "2026-05-25 19:25"
+  },
+  "9007497901": {
+    "action": "SKIP",
+    "reason": "Pilgrim's Progress is theological/religious allegory — hard skip category. Spine also heavily deteriorated.",
+    "analysed": "2026-05-25 22:16"
   }
 }

@@ -64,6 +64,8 @@ Damage signals (any one = SKIP):
 Wrong item signals (any one = SKIP):
 • Thin booklet / pamphlet / school primer — spine under ~1cm
 • Single print or page torn from a book — not a complete volume
+• Theology / divinity / sermons — slow category regardless of age or binding
+  (commentaries, epistles, doctrinal works, homilies, patristics)
 
 ━━━ BUY — weighted signals, not a strict checklist ━━━
 

@@ -7,7 +7,17 @@
     "series": 2,
     "john": 2,
     "murray": 2,
-    "collectible": 2
+    "collectible": 2,
+    "leather": 1,
+    "bound": 1,
+    "country": 1,
+    "pastimes": 1,
+    "boys": 1,
+    "victorian": 1,
+    "through": 1,
+    "normandy": 1,
+    "katharine": 1,
+    "macquoid": 1
   },
-  "total_buy_alerts": 2
+  "total_buy_alerts": 6
 }

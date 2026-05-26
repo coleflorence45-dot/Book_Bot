@@ -28,12 +28,24 @@ def send_alert(item: dict):
     year_line = f"📅 Year hint: {_e(item['year_hint'])}" if item.get("year_hint") else ""
     fav_count   = item.get("favourites", 0) or 0
     listing_age = item.get("listing_age")
-    if fav_count >= 5 and listing_age is not None and listing_age <= 40:
-        fav_line = f"🔥 {fav_count} favourites in {listing_age} minutes — act fast"
-    elif fav_count >= 5:
-        fav_line = f"❤️ {fav_count} favourites"
+
+    # Format listing age into a readable string
+    if listing_age is not None:
+        if listing_age < 60:
+            age_str = f"{listing_age}m ago"
+        elif listing_age < 1440:
+            h, m = divmod(listing_age, 60)
+            age_str = f"{h}h {m}m ago" if m else f"{h}h ago"
+        else:
+            days = listing_age // 1440
+            age_str = f"{days}d ago"
     else:
-        fav_line = ""
+        age_str = "unknown"
+
+    fav_emoji = "🔥" if (fav_count >= 5 and listing_age is not None and listing_age <= 40) else "❤️"
+    fav_line  = f"{fav_emoji} {fav_count} favourite{'s' if fav_count != 1 else ''} · Listed {age_str}"
+    if fav_count >= 5 and listing_age is not None and listing_age <= 40:
+        fav_line += " — act fast"
 
     # Market value lines — AbeBooks (asking) and eBay (sold)
     abebooks     = item.get("market_abebooks") or {}
@@ -53,14 +65,23 @@ def send_alert(item: dict):
             )
 
     if abebooks.get("found"):
-        if abebooks.get("confirmed_flip"):
+        abe_price = abebooks['lowest_price']
+        abe_multiple = abebooks['multiple']
+        # Cap at 50x — anything higher is almost certainly a scraper outlier
+        # (unrelated high-value listing matching the search query)
+        if abe_multiple > 50:
             market_lines.append(
-                f"🔥 <b>AbeBooks asking: from £{abebooks['lowest_price']:.2f}</b> "
-                f"({abebooks['multiple']}x your price)"
+                f"📖 AbeBooks asking: from £{abe_price:.2f} "
+                f"(⚠️ high multiple — verify manually)"
+            )
+        elif abebooks.get("confirmed_flip"):
+            market_lines.append(
+                f"🔥 <b>AbeBooks asking: from £{abe_price:.2f}</b> "
+                f"({abe_multiple}x your price)"
             )
         else:
             market_lines.append(
-                f"📖 AbeBooks asking: from £{abebooks['lowest_price']:.2f} "
+                f"📖 AbeBooks asking: from £{abe_price:.2f} "
                 f"(median £{abebooks['median_price']:.2f})"
             )
 
@@ -76,16 +97,23 @@ def send_alert(item: dict):
     ]
     if year_line:
         lines.append(year_line)
-    if fav_line:
-        lines.append(fav_line)
+    lines.append(fav_line)
     if market_lines:
         lines += market_lines
     if pricing_line:
         lines += ["", pricing_line]
+
+    # Score signals — compact single line, shows what drove the score
+    signals = item.get("signals", [])
+    if signals:
+        # Strip emoji prefixes for compactness, join with ·
+        compact = " · ".join(
+            s.split(" ", 1)[1] if s and s[0] in "📖📅🏛️💸🌿🔭🔮🎨🖼️🥇🐌🚫" else s
+            for s in signals[:8]   # cap at 8 to avoid message length issues
+        )
+        lines += ["", f"<i>Signals: {_e(compact)}</i>"]
+
     lines += [
-        "",
-        "<b>Signals:</b>",
-        _e(signals_text),
         "",
         verdict_line,
         "",
