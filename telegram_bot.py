@@ -124,15 +124,16 @@ def send_alert(item: dict):
     url     = f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/sendMessage"
 
     # ── Callback data — strict 64-byte limit ──────────────────────────────────
-    # Keep only what telegram_actions.py needs to log a purchase.
-    # The Vinted URL is reconstructed from item_id on the receiving end.
+    # Telegram enforces 64 BYTES not characters. Multi-byte chars (en-dash,
+    # smart quotes, etc.) cause BUTTON_DATA_INVALID if we count chars only.
     # Format: action|item_id|price|short_title
-    item_id    = str(item.get("id", ""))
-    price_str  = str(float(item.get("price", 0)))
-    # Trim title to fit within 64 bytes total for the bought callback
-    # "bought|" (7) + item_id (≤12) + "|" + price (≤6) + "|" = ~26 chars overhead
-    max_title  = 64 - 7 - len(item_id) - 1 - len(price_str) - 1
-    short_title = (item.get("title") or "")[:max(0, max_title)]
+    item_id   = str(item.get("id", ""))
+    price_str = str(float(item.get("price", 0)))
+    prefix    = f"bought|{item_id}|{price_str}|".encode("utf-8")
+    max_title_bytes = 64 - len(prefix)
+    raw_title = (item.get("title") or "")
+    # Slice to byte limit, decode safely (ignore incomplete multi-byte chars)
+    short_title = raw_title.encode("utf-8")[:max(0, max_title_bytes)].decode("utf-8", errors="ignore")
 
     inline_keyboard = {"inline_keyboard": [[
         {"text": "✅ Bought",

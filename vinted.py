@@ -129,7 +129,16 @@ def extract_year_from_title(title: str):
                 exact.append(y2)
 
     candidates = exact + decade
-    return min(candidates) if candidates else None
+    if not candidates:
+        return None
+    # If any candidate year is post-1910, return the most recent one.
+    # Rationale: "1987 edition of this book first published 1899" should
+    # return 1987 so the post-cutoff hard block fires — not 1899 which
+    # would incorrectly make it look Victorian.
+    modern = [y for y in candidates if y > 1910]
+    if modern:
+        return max(modern)
+    return min(candidates)
 
 
 def fetch_item_detail(item_id: str) -> dict:

@@ -41,6 +41,10 @@ from config import (
 EX_LIBRARY_SIGNALS = [
     "ex library", "ex-library", "ex libris", "library stamp",
     "library plate", "shelf number", "shelf mark", "library sticker",
+    # Institutional / government copies
+    "m.o.d", "ministry of defence", "ministry of defense",
+    "government stamp", "library stamped", "college stamp",
+    "institutional stamp", "property of",
 ]
 
 FIRST_EDITION_PHRASES = [
@@ -451,6 +455,12 @@ def hard_block(item: dict) -> tuple[bool, str]:
         "priory classics",
         "dennis wheatley library",
         "time-life books", "time life books",   # modern illustrated series
+        "heron books",              # 1970s-80s decorative reprint series
+        "grolier",                  # Grolier Disney/children's book club editions
+        "taschen",                  # modern art/photography publisher
+        "lonely planet",            # modern travel guide publisher (est. 1973)
+        "rough guide", "rough guides",  # modern travel guides (est. 1982)
+        "readers digest", "reader's digest",  # modern illustrated series
     ]
     MODERN_PUBLISHER_EXACT = [
         "dk eyewitness", "dk publishing", "published by dk",
@@ -571,6 +581,9 @@ def hard_block(item: dict) -> tuple[bool, str]:
         "carl sagan",                # modern astronomer
         # Modern children's authors often caught by nature/animal signals
         "enid blyton",               # published 1920s onwards
+        # Modern interior design/craft authors scoring on decorative signals
+        "jocasta innes",             # Paint Magic, Decorative Finishes — 1990s
+        "kirstie allsopp",           # modern TV presenter craft books
     ]
     title_lower = _normalise(item.get("title") or "")
     if any(phrase in title_lower for phrase in NON_BOOK_ITEM_SIGNALS):
@@ -582,6 +595,7 @@ def hard_block(item: dict) -> tuple[bool, str]:
     RELIGIOUS_PHRASES = [
         "prayer book", "prayer books", "book of prayers",
         "holy bible", "the bible", "king james bible", "kjv bible",
+        " bible",                   # bare word — "antique 1800s bible" etc.
         "new testament", "old testament",
         "book of common prayer",
         "hymn book", "hymnal", "hymnary",
@@ -634,6 +648,12 @@ def hard_block(item: dict) -> tuple[bool, str]:
         "ages 3", "ages 4", "ages 5", "ages 6",
         "ages 7", "ages 8", "ages 9", "ages 10",
         "ages 11", "ages 12",
+        # Activity/sticker formats — never Victorian
+        "sticker book", "sticker atlas", "sticker picture", "sticker activity",
+        "sticker encyclopedia",
+        # Modern fantasy/children's subjects
+        "unicorn book", "pop a unicorn", "my unicorn",
+        "dinosaur book", "dinosaur activity",
     ]
     if any(phrase in title_lower for phrase in CHILDRENS_BOOK_PHRASES):
         return True, "Children's/age-targeted book (not a collectible)"
@@ -724,6 +744,12 @@ def hard_block(item: dict) -> tuple[bool, str]:
         # Photography books — modern, never Victorian collectibles
         "wildlife photography", "nature photography", "photography book",
         "photography saving", "one frame at a time",
+        # Modern comedy/novelty gift books
+        "grumpy old", "old gits", "git's guide", "guide to life",
+        "bloke's guide", "bloke guide", "man's guide",
+        # Travel guides (unbranded — branded ones caught by MODERN_PUBLISHER_BLOCK)
+        "travel guide book", "holiday guide", "visitors guide",
+        "visitor's guide",
     ]
     if any(phrase in title_lower for phrase in MODERN_CONTENT_PHRASES):
         return True, "Modern self-help/lifestyle book (not a collectible)"
@@ -774,10 +800,24 @@ def hard_block(item: dict) -> tuple[bool, str]:
         "antique print", "old print",
         "botanical print", "natural history print",
         "framed print", "mounted print",
+        "postcard framed", "framed postcard",
+        "postcard print", "vintage postcard",
         "illustration print", "engraving print",
         "book plate", "bookplate",      # loose plate torn from a book
         "book of birds plate", "birds plate",
         "vol 1 plate", "vol 2 plate", "volume 1 plate", "volume 2 plate",
+        # Loose pages sold for crafting/journalling
+        "pages for crafting", "pages for junk", "pages for journalling",
+        "pages for collage", "book pages for",
+        "antique pages", "vintage pages",  # torn pages sold as craft supplies
+        # Original Lloyds/Lloyd plates
+        "original lloyds", "original lloyd",
+        "butterflies plate", "butterfly plate", "moths plate",
+        "natural history plate", "book illustration featuring",
+        # Sets of prints sold as illustrations
+        "bird illustrations", "botanical illustrations", "natural history illustrations",
+        "vintage illustrations", "antique illustrations",
+        "wildlife illustrations", "animal illustrations",
     ]
     if any(phrase in title_lower for phrase in BOOK_PRINT_PHRASES):
         return True, "Single print/illustration (not a book)"
@@ -874,6 +914,20 @@ def hard_block(item: dict) -> tuple[bool, str]:
         "press out", "press-out",
         # Annuals — almost always post-1900
         "annual 19", "annual 20",
+        # Ladybird/reading schemes
+        "puddle lane",
+        # Modern children's TV/books
+        "gruffalo", "tots tv", "super ted", "superted",
+        "icarly", "peppa pig", "horrid henry",
+        "ren & stimpy", "ren and stimpy",
+        "sesame street", "elmo",
+        # Modern YA fiction
+        "maze runner", "hunger games",
+        # DK Eyewitness — modern illustrated reference
+        "eyewitness astronomy", "eyewitness companions",
+        "eyewitness guides", "eyewitness guide",
+        # Stationery masquerading as collectibles
+        "wedding guest book", "guest book", "visitor book",
     ]
     if any(phrase in title_lower for phrase in MODERN_SERIES_PHRASES):
         return True, "Modern series/annual (not a collectible)"
@@ -885,6 +939,7 @@ def hard_block(item: dict) -> tuple[bool, str]:
         "baking book", "baking books",
         "cook express", "cooking book",
         "teatime recipes", "tea time recipes",
+        "alchemist cocktail",       # The Alchemist bar cocktail book
     ]
     if any(phrase in title_lower for phrase in COOKBOOK_PHRASES):
         return True, "Cookbook/recipe book (not a collectible)"
@@ -902,10 +957,16 @@ def hard_block(item: dict) -> tuple[bool, str]:
     BOOK_ACCESSORY_PHRASES = [
         # Bookends, storage, stands
         "book end", "bookend", "book ends", "bookends",
-        "book box", "book shaped", "book nook",
+        "book box", "book shaped", "book-shaped", "book nook",
         "book rack", "book riser", "book stand",
         "book safe", "storage box", "trinket box",
         "book storage",           # e.g. "book storage unit", "vintage book storage"
+        "book/box", "book box",    # decorative storage boxes shaped like books
+        "book vase",               # vases shaped like books
+        "book shelf", "bookshelf",  # furniture
+        "jigsaw",                  # puzzle, not a book
+        "book tracker", "reading tracker", "reading journal",
+        "reading planner", "reading log",
         "bookshelf stand", "bookshelf unit", "book shelf stand",
         "bookmark", "book mark",
         # Metal/tin signs — score on "vintage" + "book" + "floral" etc.
@@ -931,7 +992,8 @@ def hard_block(item: dict) -> tuple[bool, str]:
         # Gift / decorative items
         "book lover gift", "bookish gift", "book themed",
         "book lover mug", "book lover tote",
-        "reading gift", "book gift",
+        "reading gift", "book gift,", "book gift.", "book gift ",
+        "book gifts",
         # Event / membership
         "club ticket", "book ticket", "event ticket",
         "book club ticket", "book club box", "book club subscription",
@@ -939,6 +1001,16 @@ def hard_block(item: dict) -> tuple[bool, str]:
         "bookish subscription",
         # Brand that makes resin/gothic decorative items
         "nemesis now",
+        # Wall art / paintings — never books regardless of gothic/vintage signals
+        "wall art", "oil painting", "oil paint",
+        "canvas print", "canvas art", "art print",
+        "watercolour painting", "watercolor painting",
+        "acrylic painting", "gouache painting",
+        "signed print", "giclee print",
+        # Bags and textile items — score on floral/travel/vintage but aren't books
+        "travel bag", "tote bag", "handbag", "shoulder bag",
+        "embroidered bag", "embroidered pouch",
+        "wash bag", "makeup bag", "cosmetic bag",
     ]
     if any(phrase in title_lower for phrase in BOOK_ACCESSORY_PHRASES):
         return True, "Book accessory (not an actual book)"
@@ -950,6 +1022,13 @@ def hard_block(item: dict) -> tuple[bool, str]:
     if (title_words & PRINT_TITLE_NOUNS) and not (title_words & STRONG_BOOK_WORDS):
         return True, "Single print/illustration (not a book)"
 
+    # Single plate torn from a book — "Original 1896 butterfly plate" etc.
+    # Uses tighter exclusions than STRONG_BOOK_WORDS: "book" alone doesn't save it
+    # because parent book title ("Book of Butterflies") appears in the listing title.
+    PLATE_EXCLUSIONS = {"hardback", "hardcover", "volume", "vol", "edition", "leatherbound", "complete", "illustrated"}
+    if (title_words & {"plate", "plates"}) and not (title_words & PLATE_EXCLUSIONS):
+        return True, "Individual page/cutting from a book (not a complete book)"
+
     # Not a book or print at all — mirrors, jewellery, ceramics etc.
     # We pass if ANY book/print content word is present OR if a genre signal is
     # present (subject-matter titles like "Natural History of Britain" contain
@@ -960,6 +1039,11 @@ def hard_block(item: dict) -> tuple[bool, str]:
     # If a Victorian year is present, it's almost certainly a book listing
     if not has_book_word and not has_genre_word and not has_year:
         return True, "No book/print content indicators found"
+
+    # Dust jacket in title — always a modern or reprint edition
+    # Victorian books were never sold with dust jackets
+    if "dust jacket" in title_lower or "dustjacket" in title_lower:
+        return True, "Dust jacket present (modern/reprint edition)"
 
     # Post-1900 year in title — priority genres get extended cutoff to 1910
     year = item.get("year_hint")
